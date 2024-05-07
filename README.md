@@ -152,6 +152,23 @@ npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
 - [x] **Configuración** <details><summary>**Ajustes del Servidor - NovaBot-MD**</summary><img src="https://telegra.ph/file/38d1458d37957d7323e7b.jpg"></details>
 
 ------------------ 
+
+### 📦⛏️ BOXMINE HOST 
+[![YouTube](https://img.shields.io/badge/BoxMine_Host-World-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@boxminehost)
+
+> Boxmine host
+
+<a href="https://boxmineworld.com"><img src="https://i.imgur.com/allAyd4.png" height="125px"></a>
+### BoxMine World
+- **Pagina Oficial:** [`Boxmineworld`](https://boxmineworld.com)
+- **Tutorial - Crear cuenta en la Dashboard:** [`Dashboard`](https://www.youtube.com/watch?v=ZAwBLuNmIlI)
+- **Dashboard:** [`Dash`](https://dash.boxmineworld.com)
+- **Panel:** [`Aquí`](https://panel.boxmineworld.com)
+- **Dudas sobre el Host:** [`Discord`](https://discord.gg/84qsr4v) _(Preguntar por Vicemi)_
+- **Canal de WhatsApp:** [`Aquí`](https://whatsapp.com/channel/0029Va71C1q2UPBOICnxu83r)
+
+- [x] **Configuración** <details><summary>**Ajustes del Servidor - NovaBot-MD**</summary><img src="https://qu.ax/GVSq.jpg"></details>
+------------------ 
 ### 🟢 ACTIVAR EN CODES SPACES 
 
 [`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=elrebelde21/NovaBot-MD&ref=main&geo=UsEast)
