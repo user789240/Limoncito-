@@ -562,7 +562,7 @@ if (setting) {
 if (!isNumber(setting.status)) setting.status = 0  
 if (!('self' in setting)) setting.self = false;
 if (!('autobio' in setting)) setting.autobio = true
-if (!('jadibotmd' in setting)) setting.jadibotmd = true 
+if (!('jadibotmd' in setting)) setting.jadibotmd = false
 if (!('anticall' in setting)) setting.anticall = true
 if (!('antiprivado' in setting)) setting.antiprivado = false;
 if (!('antipv' in setting)) setting.antipv = false;	
@@ -570,7 +570,7 @@ if (!('antipv' in setting)) setting.antipv = false;
 status: 0,  
 self: false, 
 autobio: true,
-jadibotmd: true,
+jadibotmd: false,
 anticall: true, 
 antiprivado: false, 
 antipv: false
