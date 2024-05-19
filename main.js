@@ -212,7 +212,7 @@ conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}}}
 //--------------------[ viewOnceMessage ]-----------------------
 if (m.mtype == 'viewOnceMessageV2') { 
 //if (global.db.data.chats[m.chat].viewonce) return
-teks = `\`𝙰𝚀𝚄𝙸 𝙽𝙾 𝚂𝙴 𝙿𝙴𝚁𝙼𝙸𝚃𝙴 𝙾𝙲𝚄𝙻𝚃𝙰𝚁 𝙽𝙰𝙳𝙰\``
+teks = `\`${lenguaje['viewOnce']()}\``
 let msg = m.message.viewOnceMessageV2.message
 let type = Object.keys(msg)[0]
 let media = await downloadContentFromMessage(msg[type], type == 'imageMessage' ? 'image' : 'video')
@@ -232,7 +232,7 @@ if (isGroupAdmins) return reply(lenguaje['smsAntiLink5']())
 if (!isBotAdmins) return m.reply(lenguaje['smsAntiLink6']())
 if (m.key.fromMe) return
 if (!isCreator) return 
-conn.sendMessage(m.chat, {text:`${user.Language === 'es' ? '*LINK DE YOUTUBE DETECTADO 📢*' : user.Language === 'en' ? '*YOUTUBE LINK DETECTED 📢*' : user.Language === 'ar' ? '*تم اكتشاف رابط اليوتيوب 📢*' : user.Language === 'pt' ? '*LINK DE YOUTUBE DETECTADO 📢' : user.Language === 'id' ? '*LINK YOUTUBE TERDETEKSI 📢' : user.Language === 'rs' ? '*ОБНАРУЖЕНА ССЫЛКА НА ЮТУБ 📢' : user.Language}\n@${sender.split("@")[0]} ${user.Language === 'es' ? 'Usted sera eliminado de este grupo' : user.Language === 'en' ? ' You will be removed from this group' : user.Language === 'ar' ? ' ستتم إزالتك من هذه المجموعة' : user.Language === 'pt' ? ' Você será removido deste grupo' : user.Language === 'id' ? ' Anda akan dikeluarkan dari grup ini' : user.Language === 'rs' ? ' Вы будете удалены из этой группы' : user.Language}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+conn.sendMessage(m.chat, {text:`${lenguaje['AntiLink']()}\n@${sender.split("@")[0]} ${lenguaje['AntiLink2']()}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})
 conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }}
@@ -243,7 +243,7 @@ if (isGroupAdmins) return reply(lenguaje['smsAntiLink5']())
 if (!isBotAdmins) return m.reply(lenguaje['smsAntiLink6']())
 if (m.key.fromMe) return
 if (!isCreator) return 
-conn.sendMessage(m.chat, {text:`${user.Language === 'es' ? '*LINK DE INSTAGRAM DETECTADO 📢*' : user.Language === 'en' ? '*INSTAGRAM LINK DETECTED 📢*' : user.Language === 'ar' ? '*تم اكتشاف رابط الانستغرام 📢*' : user.Language === 'pt' ? '*LINK DE INSTAGRAM DETECTADO 📢*' : user.Language === 'id' ? '*LINK INSTAGRAM TERDETEKSI 📢*' : user.Language === 'rs' ? '*ОБНАРУЖЕНА ССЫЛКА НА INSTAGRAM 📢*' : user.Language}\n@${sender.split("@")[0]} ${user.Language === 'es' ? 'Usted sera eliminado de este grupo' : user.Language === 'en' ? ' You will be removed from this group' : user.Language === 'ar' ? ' ستتم إزالتك من هذه المجموعة' : user.Language === 'pt' ? ' Você será removido deste grupo' : user.Language === 'id' ? ' Anda akan dikeluarkan dari grup ini' : user.Language === 'rs' ? ' Вы будете удалены из этой группы' : user.Language}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+conn.sendMessage(m.chat, {text:`${lenguaje['AntiLink']()}\n@${sender.split("@")[0]} ${lenguaje['AntiLink2']()}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})
 conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }}
@@ -254,7 +254,7 @@ if (isGroupAdmins) return reply(lenguaje['smsAntiLink5']())
 if (!isBotAdmins) return m.reply(lenguaje['smsAntiLink6']())
 if (m.key.fromMe) return
 if (!isCreator) return 
-conn.sendMessage(m.chat, {text:`${user.Language === 'es' ? '*LINK DE FACEBOOK DETECTADO 📢*' : user.Language === 'en' ? '*LINK DE FACEBOOK DETECTADO 📢*' : user.Language === 'ar' ? '*تم اكتشاف رابط الفيسبوك 📢*' : user.Language === 'pt' ? '*LINK DO FACEBOOK DETECTADO 📢*' : user.Language === 'id' ? '*LINKFACEBOOK TERDETEKSI 📢*' : user.Language === 'rs' ? '*ОБНАРУЖЕНА ССЫЛКА НА FACEBOOK 📢*' : user.Language}\n@${sender.split("@")[0]} ${user.Language === 'es' ? 'Usted sera eliminado de este grupo' : user.Language === 'en' ? ' You will be removed from this group' : user.Language === 'ar' ? ' ستتم إزالتك من هذه المجموعة' : user.Language === 'pt' ? ' Você será removido deste grupo' : user.Language === 'id' ? ' Anda akan dikeluarkan dari grup ini' : user.Language === 'rs' ? ' Вы будете удалены из этой группы' : user.Language}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+conn.sendMessage(m.chat, {text:`${lenguaje['AntiLink']()}\n@${sender.split("@")[0]} ${lenguaje['AntiLink2']()}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})
 conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }}
@@ -265,7 +265,7 @@ if (isGroupAdmins) return reply(lenguaje['smsAntiLink5']())
 if (!isBotAdmins) return m.reply(lenguaje['smsAntiLink6']())
 if (m.key.fromMe) return
 if (!isCreator) return 
-conn.sendMessage(m.chat, {text: `${user.Language === 'es' ? '*LINK DE TELEGRAM DETECTADO 📢*' : user.Language === 'en' ? '*TELEGRAM LINK DETECTED 📢*' : user.Language === 'ar' ? '*تم اكتشاف رابط التليجرام 📢*' : user.Language === 'pt' ? '*LINK DE TELEGRAM DETECTADO 📢*' : user.Language === 'id' ? '*LINK TELEGRAM TERDETEKSI 📢*' : user.Language === 'rs' ? '*ОБНАРУЖЕНА ССЫЛКА НА ТЕЛЕГРАММУ 📢*' : user.Language}\n@${sender.split("@")[0]} ${user.Language === 'es' ? 'Usted sera eliminado de este grupo' : user.Language === 'en' ? ' You will be removed from this group' : user.Language === 'ar' ? ' ستتم إزالتك من هذه المجموعة' : user.Language === 'pt' ? ' Você será removido deste grupo' : user.Language === 'id' ? ' Anda akan dikeluarkan dari grup ini' : user.Language === 'rs' ? ' Вы будете удалены из этой группы' : user.Language}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+conn.sendMessage(m.chat, {text: `${lenguaje['AntiLink']()}\n@${sender.split("@")[0]} ${lenguaje['AntiLink2']()}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})
 conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }}
@@ -275,7 +275,7 @@ if (budy.match("https://www.tiktok.com/") || budy.match("https://vm.tiktok.com/"
 //f (!isCreator) return m.reply(`Es mi creador Salvador`) 
 if (isGroupAdmins) return reply(lenguaje['smsAntiLink5']())
 if (!isBotAdmins) return m.reply(lenguaje['smsAntiLink6']())
-conn.sendMessage(m.chat, {text:`${user.Language === 'es' ? '*LINK DE TIKTOK DETECTADO 📢*' : user.Language === 'en' ? '*TIKTOK LINK DETECTED 📢*' : user.Language === 'ar' ? '*تم اكتشاف رابط التيك توك 📢*' : user.Language === 'pt' ? '*LINK DO TIKTOK DETECTADO 📢*' : user.Language === 'id' ? '*LINK TIKTOK TERDETEKSI 📢*' : user.Language === 'rs' ? '*ОБНАРУЖЕНА ССЫЛКА НА TIKTOK 📢*' : user.Language}\n\n@${sender.split("@")[0]} ${user.Language === 'es' ? 'Usted sera eliminado de este grupo' : user.Language === 'en' ? ' You will be removed from this group' : user.Language === 'ar' ? ' ستتم إزالتك من هذه المجموعة' : user.Language === 'pt' ? ' Você será removido deste grupo' : user.Language === 'id' ? ' Anda akan dikeluarkan dari grup ini' : user.Language === 'rs' ? ' Вы будете удалены из этой группы' : user.Language}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+conn.sendMessage(m.chat, {text:`${lenguaje['AntiLink']()}\n\n@${sender.split("@")[0]} ${lenguaje['AntiLink2']()}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})
 conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }}
@@ -286,7 +286,7 @@ if (isGroupAdmins) return reply(lenguaje['smsAntiLink5']())
 if (!isBotAdmins) return m.reply(lenguaje['smsAntiLink6']())
 if (m.key.fromMe) return m.reply(lenguaje['smsAntiLink5']())
 if (!isCreator) return 
-conn.sendMessage(m.chat, {text:`${user.Language === 'es' ? '*LINK DE TWITER (X) DETECTADO 📢*' : user.Language === 'en' ? '*TWITER LINK (X) DETECTED 📢*' : user.Language === 'ar' ? '*تم اكتشاف رابط تويتر (X) 📢*' : user.Language === 'pt' ? '*LINK DO TWITER (X) DETECTADO 📢*' : user.Language === 'id' ? '*LINK TWITER (X) TERDETEKSI 📢*' : user.Language === 'rs' ? '*ССЫЛКА НА ТВИТЕР (X) ОБНАРУЖЕНА 📢*' : user.Language}\n@${sender.split("@")[0]} ${user.Language === 'es' ? 'Usted sera eliminado de este grupo' : user.Language === 'en' ? ' You will be removed from this group' : user.Language === 'ar' ? ' ستتم إزالتك من هذه المجموعة' : user.Language === 'pt' ? ' Você será removido deste grupo' : user.Language === 'id' ? ' Anda akan dikeluarkan dari grup ini' : user.Language === 'rs' ? ' Вы будете удалены из этой группы' : user.Language}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+conn.sendMessage(m.chat, {text:`${lenguaje['AntiLink']()}\n@${sender.split("@")[0]} ${lenguaje['AntiLink2']()}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})
 conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }}
@@ -297,7 +297,7 @@ if (isGroupAdmins) return reply(lenguaje['smsAntiLink5']())
 if (!isBotAdmins) return m.reply(lenguaje['smsAntiLink6']())
 if (m.key.fromMe) return
 if (!isCreator) return 
-conn.sendMessage(m.chat, {text:`${user.Language === 'es' ? '*LINK DE HTTPS DETECTADO 📢*' : user.Language === 'en' ? '*HTTPS LINK DETECTED 📢*' : user.Language === 'ar' ? '*تم اكتشاف رابط HTTPS 📢*' : user.Language === 'pt' ? '*LINK HTTPS DETECTADO 📢*' : user.Language === 'id' ? '*LINK HTTPS TERDETEKSI 📢*' : user.Language === 'rs' ? '*ОБНАРУЖЕНА HTTPS-ССЫЛКА 📢*' : user.Language}\n@${sender.split("@")[0]} ${user.Language === 'es' ? 'Usted sera eliminado de este grupo' : user.Language === 'en' ? ' You will be removed from this group' : user.Language === 'ar' ? ' ستتم إزالتك من هذه المجموعة' : user.Language === 'pt' ? ' Você será removido deste grupo' : user.Language === 'id' ? ' Anda akan dikeluarkan dari grup ini' : user.Language === 'rs' ? ' Вы будете удалены из этой группы' : user.Language}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+conn.sendMessage(m.chat, {text:`${lenguaje['AntiLink']()}\n@${sender.split("@")[0]} ${lenguaje['AntiLink2']()}`, mentions: [sender], },{quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant }})
 conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }}
@@ -331,10 +331,10 @@ const chat = global.db.data.chats[m.chat];
 const bot = global.db.data.settings[conn.user.jid] || {};
 const isToxic = budy.match; 
 user.warn += 1;
-if (!(user.warn >= 4)) await conn.sendMessage(m.chat, {text: `Hey @${m.sender.split('@')[0]} ${user.Language === 'es' ? 'decir la palabra ' : user.Language === 'en' ? ' say the word' : user.Language === 'ar' ? ' قل الكلمة قل الكلمة' : user.Language === 'pt' ? ' diga a palavra' : user.Language === 'id' ? ' ucapkan kata itu' : user.Language === 'rs' ? ' скажи слово' : user.Language} *(${isToxic})* ${user.Language === 'es' ? 'Esta prohibida En este grupo, No seas Toxico(a)\n\nADVERTENCIA' : user.Language === 'en' ? 'It is prohibited in this group, do not be toxic\n\nWARNING' : user.Language === 'ar' ? ' ممنوع في هذه المجموعة، لا تكن ساماً\n\nتحذير' : user.Language === 'pt' ? 'É proibido neste grupo, não seja tóxico\n\nAVISO' : user.Language === 'id' ? 'Dilarang di grup ini, jangan beracun\n\nPERINGATAN' : user.Language === 'rs' ? 'Запрещено в этой группе, не токсично.\n\nВНИМАНИЕ.' : user.Language}\n⚠️ *${user.warn}/4*\n\n${botname}`, mentions: [m.sender]}, {quoted: m})
+if (!(user.warn >= 4)) await conn.sendMessage(m.chat, {text: `${lenguaje['AntiToxic'](m, isToxic)}\n⚠️ *${user.warn}/4*\n\n${botname}`, mentions: [m.sender]}, {quoted: m})
 if (user.warn >= 4) {
 user.warn = 0;
-await conn.sendMessage(m.chat, {text: `*@${m.sender.split('@')[0]} ${user.Language === 'es' ? 'superaste las 4 advertencias serás eliminado de este grupo 😐....*' : user.Language === 'en' ? 'you passed the 4 warnings you will be removed from this group 😐....*' : user.Language === 'ar' ? ' لقد تجاوزت الـ 4 تحذيرات سيتم إزالتك من هذه المجموعة 😐....*' : user.Language === 'pt' ? 'você passou nos 4 avisos você será removido deste grupo 😐....*' : user.Language === 'id' ? 'kamu melewati 4 peringatan kamu akan dikeluarkan dari grup ini 😐....*' : user.Language === 'rs' ? 'вы прошли 4 предупреждения, вы будете удалены из этой группы 😐....*' : user.Language}`, mentions: [m.sender]}, {quoted: m})
+await conn.sendMessage(m.chat, {text: `*@${m.sender.split('@')[0]} ${lenguaje['AntiToxic2']()}*`, mentions: [m.sender]}, {quoted: m})
 user.banned = true
 await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
 return !1;
@@ -441,14 +441,14 @@ global.lenguaje = es
 }             
  
 //---------------------[ ANTISPAM ]------------------------
-/*if (global.db.data.chats[m.chat].antispam && prefix) {
+if (global.db.data.chats[m.chat].antispam && prefix) {
 let user = global.db.data.users[m.sender]
 let str = [nna, md, yt, tiktok, fb] 
 let info = str[Math.floor(Math.random() * str.length)]
 const date = global.db.data.users[m.sender].spam + 3000; //600000 
 if (new Date - global.db.data.users[m.sender].spam < 3000) return console.log(`[ SPAM ] ➢ ${command} [${args.length}]`)  
 global.db.data.users[m.sender].spam = new Date * 1;
-}*/
+}
 
 //---------------------[ TicTacToe ]------------------------
 let winScore = 4999
@@ -493,12 +493,7 @@ room13.game._currentTurn = m.sender === room13.game.playerX
 isWin = true
 }
 let winner = isSurrender ? room13.game.currentTurn : room13.game.winner
-let str = `*\`🎮 ${user.Language === 'es' ? 'ＴＲＥＳ ＥＮ ＲＡＹＡ' : 
-user.Language === 'en' ? 'THREE IN A TAIL' : 
-user.Language === 'ar' ? ' ثلاثة في الذيل' : 
-user.Language === 'pt' ? 'JOGO DO GALO' : 
-user.Language === 'id' ? 'TIGA DALAM EKOR' : 
-user.Language === 'rs' ? 'ТРИ В ХВОСТЕ' : user.Language} 🎮\`*
+let str = `${lenguaje.game.text1}
 
        ${arr.slice(0, 3).join('')}
        ${arr.slice(3, 6).join('')} 
@@ -507,7 +502,7 @@ user.Language === 'rs' ? 'ТРИ В ХВОСТЕ' : user.Language} 🎮\`*
 ❎ = @${room13.game.playerX.split('@')[0]}
 ❌ = @${room13.game.playerO.split('@')[0]}
 
-${isWin ? `@${winner.split('@')[0]} ${user.Language === 'es' ? '*HAS GANADOS 🎉*' : user.Language === 'en' ? '*YOU HAVE WON 🎉*' : user.Language === 'ar' ? '*لقد فزت 🎉*' : user.Language === 'pt' ? '*VOCÊ GANHOU 🎉*' : user.Language === 'id' ? '*KAMU TELAH MENANG 🎉*' : user.Language === 'rs' ? '*ТЫ ВЫИГРАЛА 🎉*' : user.Language}\n*🎁 ${user.Language === 'es' ? 'OBTIENE :' : user.Language === 'en' ? 'YOU GET:' : user.Language === 'ar' ? ' لقد حصلت:' : user.Language === 'pt' ? 'VOCÊ OBTEM:' : user.Language === 'id' ? 'ANDA MENDAPATKAN:' : user.Language === 'rs' ? 'ВЫ ПОЛУЧАЕТЕ:' : user.Language}* ${winScore} XP` : isTie ? `*${user.Language === 'es' ? 'EMPATE' : user.Language === 'en' ? 'A TIE' : user.Language === 'ar' ? ' التعادل' : user.Language === 'pt' ? 'EMPATE' : user.Language === 'id' ? 'DASI' : user.Language === 'rs' ? 'ГАЛСТУК' : user.Language} 😹*` : `${user.Language === 'es' ? '𝐓𝐮𝐫𝐧𝐨 𝐝𝐞 :' : user.Language === 'en' ? ' Turn of:' : user.Language === 'ar' ? ' اطفئ:' : user.Language === 'pt' ? ' Desligar:' : user.Language === 'id' ? ' Matikan:' : user.Language === 'rs' ? ' Выключение:' : user.Language}
+${isWin ? `@${winner.split('@')[0]} ${lenguaje.game.text2} ${winScore} XP` : isTie ? `${lenguaje.game.text3}` : `${lenguaje.game.text4}
 
  ${['❎', '❌'][1 * room13.game._currentTurn]} (@${room13.game.currentTurn.split('@')[0]})`}` //`
 let users = global.db.data.users
@@ -531,7 +526,7 @@ jawaban = kuismath[m.sender.split('@')[0]]
 if (budy.toLowerCase() == jawaban) { 
 const exp = Math.floor(Math.random() * 600)
 global.db.data.users[m.sender].exp += exp;
-await m.reply(`${user.Language === 'es' ? '*Respuesta correcta 🎉*\n\n*Ganarte :*' : user.Language === 'en' ? '*Correct answer 🎉*\n\n*Earn you :*' : user.Language === 'ar' ? '*الإجابة الصحيحة 🎉*\n\n*تكسبك:*' : user.Language === 'pt' ? '*Resposta correta 🎉*\n\n*Você ganha:*' : user.Language === 'id' ? '*Jawaban yang benar 🎉*\n\n*Dapatkan penghasilan :*' : user.Language === 'rs' ? '*Правильный ответ 🎉*\n\n*Заработайте :*' : user.Language} ${exp} Exp`) 
+await m.reply(`${lenguaje.game.text5} ${exp} Exp`) 
 m.react(`✅`) 
 delete kuismath[m.sender.split('@')[0]]
 } else m.react(`❌`)} 
@@ -544,7 +539,7 @@ let _user = global.db.data.users[to]
 if (/^No|no$/i.test(body)) {
 clearTimeout(timeout)
 delete this.confirm[m.sender.split('@')[0]]
-return this.sendTextWithMentions(m.chat, `⚠️ ${user.Language === 'es' ? 'Cancelado, la transferencia no se realizará' : user.Language === 'en' ? 'Canceled, the transfer will not take place' : user.Language === 'ar' ? ' تم الإلغاء، ولن يتم النقل' : user.Language === 'pt' ? 'Cancelado, a transferência não ocorrerá' : user.Language === 'id' ? 'Dibatalkan, transfer tidak akan dilakukan' : user.Language === 'rs' ? 'Отменено, перенос не состоится' : user.Language}.`, m)}
+return this.sendTextWithMentions(m.chat, `${lenguaje.transfer.text1}.`, m)}
 
 if (/^Si|si$/i.test(body)) { 
 let previous = user[type] * 1
@@ -552,11 +547,11 @@ let _previous = _user[type] * 1
 user[type] -= count * 1
 _user[type] += count * 1
 if (previous > user[type] * 1 && _previous < _user[type] * 1) {
-conn.sendMessage(m.chat, {text: `*✅ ${user.Language === 'es' ? 'Se transfirierón correctamente' : user.Language === 'en' ? 'They were transferred successfully' : user.Language === 'ar' ? ' لقد تم نقلهم بنجاح' : user.Language === 'pt' ? 'Eles foram transferidos com sucesso' : user.Language === 'id' ? 'Mereka berhasil ditransfer' : user.Language === 'rs' ? 'Их успешно перевели' : user.Language} ${count} ${type} a @${(to || '').replace(/@s\.whatsapp\.net/g, '')}*`, mentions: [to]}, {quoted: m}); 
+conn.sendMessage(m.chat, {text: `*${lenguaje.transfer.text2} ${count} ${type} a @${(to || '').replace(/@s\.whatsapp\.net/g, '')}*`, mentions: [to]}, {quoted: m}); 
 } else { 
 user[type] = previous; 
 _user[type] = _previous; 
-conn.sendMessage(m.chat, {text: `*[ ⚠️ ] ${user.Language === 'es' ? 'Error al transferir' : user.Language === 'en' ? 'Error transferring' : user.Language === 'ar' ? ' حدث خطأ أثناء النقل' : user.Language === 'pt' ? 'Erro ao transferir' : user.Language === 'id' ? 'Kesalahan saat mentransfer' : user.Language === 'rs' ? 'Ошибка переноса' : user.Language} ${count} ${type} a @${(to || '').replace(/@s\.whatsapp\.net/g, '')}*`, mentions: [to]}, {quoted: m})} 
+conn.sendMessage(m.chat, {text: `*[ ⚠️ ] ${lenguaje.transfer.text3} ${count} ${type} a @${(to || '').replace(/@s\.whatsapp\.net/g, '')}*`, mentions: [to]}, {quoted: m})} 
 clearTimeout(timeout); 
 delete this.confirm[sender]; 
 }}
@@ -583,7 +578,7 @@ break
        
 //jadibot/serbot  
 case 'serbot': case 'jadibot': case 'qr':
-if (global.db.data.settings[numBot].jadibotmd) return m.reply(`*⚠️ Este comando fue desabilitado por el creador*`)
+//if (global.db.data.settings[numBot].jadibotmd) return m.reply(`*⚠️ Este comando fue desabilitado por el creador*`)
 jadibot(conn, m, command, text, args, sender)
 break  
 case 'deljadibot': case 'stop': 
@@ -622,22 +617,22 @@ break
 
 case 'math': case 'matematicas': {
 let user = global.db.data.users[m.sender]
-if (kuismath.hasOwnProperty(m.sender.split('@')[0])) return m.reply(`⚠️ ${user.Language === 'es' ? '𝚃𝚘𝚍𝚊𝚟𝚒𝚊 𝚑𝚊𝚢 𝚙𝚛𝚎𝚐𝚞𝚗𝚝𝚊𝚜 𝚜𝚒𝚗 𝚛𝚎𝚜𝚙𝚞𝚎𝚜𝚝𝚊 𝚎𝚗 𝚎𝚜𝚝𝚎 𝚌𝚑𝚊𝚝' : user.Language === 'en' ? 'There is still no unanswered question in this chat' : user.Language === 'ar' ? ' لا يوجد حتى الآن أي سؤال دون إجابة في هذه الدردشة' : user.Language === 'pt' ? ' Ainda não há nenhuma pergunta sem resposta neste chat' : user.Language === 'id' ? ' Masih belum ada pertanyaan yang belum terjawab dalam obrolan ini' : user.Language === 'rs' ? ' В этом чате еще нет вопросов без ответа' : user.Language}`)   
+if (kuismath.hasOwnProperty(m.sender.split('@')[0])) return m.reply(`${lenguaje.game.text6}`)   
 let { genMath, modes } = require('./libs/math')
-if (!text) return m.reply(`🧮 ${user.Language === 'es' ? '𝙳𝚒𝚏𝚒𝚌𝚞𝚕𝚝𝚊𝚍𝚎𝚜 𝚍𝚒𝚜𝚙𝚘𝚗𝚒𝚋𝚕𝚎𝚜 :' : user.Language === 'ar' ? 'الصعوبات المتاحة' : user.Language === 'pt' ? ' Dificuldades disponíveis' : user.Language === 'en' ? ' Difficulties available' : user.Language === 'id' ? ' Kesulitan tersedia' : user.Language === 'rs' ? ' Доступные сложности' : user.Language}\n\n${Object.keys(modes).join(' | ')}\n• ${user.Language === 'es' ? '*Ejemplo de uso:*' : user.Language === 'ar' ? ' مثال للاستخدام' : user.Language === 'pt' ? 'Exemplo de uso' : user.Language === 'en' ? ' Example of use' : user.Language === 'id' ? ' Contoh penggunaan' : user.Language === 'rs' ? ' Пример использования' : user.Language} ${prefix}math medium`)
+if (!text) return m.reply(`${lenguaje.game.text7}\n\n${Object.keys(modes).join(' | ')}\n• *Ejemplo de uso:* ${prefix}math medium`)
 let result = await genMath(text.toLowerCase())         
-conn.sendText(m.chat, `╔═≪ \`${user.Language === 'es' ? 'MATEMÁTICAS' : user.Language === 'en' ? 'MATEMÁTICAS' : user.Language === 'ar' ? ' الرياضيات' : user.Language === 'pt' ? ' MATEMÁTICAS' : user.Language === 'id' ? ' MATEMATIKA' : user.Language === 'rs' ? ' МАТЕМАТИКА' : user.Language}\` ≫═•
-║ *${user.Language === 'es' ? '¿𝙲𝚄𝙰𝙽𝚃𝙾 𝙴𝚂 :' : user.Language === 'en' ? 'How much is it :' : user.Language === 'ar' ? 'مرحبا' : user.Language === 'pt' ? 'Quanto é :' : user.Language === 'id' ? 'Berapa harganya :' : user.Language === 'rs' ? 'Сколько это стоит :' : user.Language} ${result.soal.toLowerCase()}?*
+conn.sendText(m.chat, `╔═≪ \`${lenguaje.game.text8}\` ≫═•
+║ *${lenguaje.game.text9} ${result.soal.toLowerCase()}?*
 ║━━━━━━━━━━━━━━━━
-║🕕 ${user.Language === 'es' ? '𝚃𝙸𝙴𝙼𝙿𝙾:' : user.Language === 'en' ? 'Time :' : user.Language === 'ar' ? ' وقت:' : user.Language === 'pt' ? 'Tempo:' : user.Language === 'id' ? 'Waktu:' : user.Language === 'rs' ? 'Время:' : user.Language} ${(result.waktu / 1000).toFixed(2)} 𝚜𝚎𝚐𝚞𝚗𝚍𝚘
+║🕕 ${lenguaje.game.text10} ${(result.waktu / 1000).toFixed(2)} 𝚜𝚎𝚐𝚞𝚗𝚍𝚘
 ║━━━━━━━━━━━━━━━━
-║ ${user.Language === 'es' ? '*𝚁𝙴𝚂𝙿𝙾𝙽𝙳𝙴 𝙰 𝙴𝚂𝚃𝙴 𝙼𝙴𝙽𝚂𝙰𝙹𝙴 𝙲𝙾𝙽 𝙻𝙰 𝚁𝙴𝚂𝙿𝚄𝙴𝚂𝚃𝙰*' : user.Language === 'en' ? '*Reply to this message with the answer*' : user.Language === 'ar' ? '*الرد على هذه الرسالة بالإجابة*' : user.Language === 'pt' ? '*Responda a esta mensagem com a resposta*' : user.Language === 'id' ? '*Balas pesan ini dengan jawabannya*' : user.Language === 'rs' ? '*Ответить на это сообщение с ответом*' : user.Language}
+║ ${lenguaje.game.text11}
 ╚════ ≪ •❈• ≫ ═════•`, m).then(() => {
 kuismath[m.sender.split('@')[0]] = result.jawaban
 })
 await sleep(result.waktu)
 if (kuismath.hasOwnProperty(m.sender.split('@')[0])) {
-m.reply(`⏳ ${user.Language === 'es' ? 'sᴇ ᴀᴄᴀʙᴏ ᴇʟ ᴛɪᴇᴍᴘᴏ!, ʟᴀ ʀᴇsᴘᴜᴇsᴛᴀ ᴇs: ' : user.Language === 'en' ? 'Time is up! The answer is:' : user.Language === 'ar' ? 'نتهى الوقت! الجواب هو:' :  user.Language === 'pt' ? 'O tempo acabou! A resposta é:' : user.Language === 'id' ? 'Waktunya habis! Jawabannya adalah:' : user.Language === 'rs' ? 'Время вышло! Ответ:' : user.Language}` + kuismath[m.sender.split('@')[0]])
+m.reply(`${lenguaje.game.text12}` + kuismath[m.sender.split('@')[0]])
 delete kuismath[m.sender.split('@')[0]]
 }}
 break
@@ -646,7 +641,7 @@ case 'ttc': case 'ttt': case 'tictactoe': {
 let user = global.db.data.users[m.sender]
 let TicTacToe = require("./libs/tictactoe")
 this.game = this.game ? this.game : {}
-if (Object.values(this.game).find(room13 => room13.id.startsWith('tictactoe') && [room13.game.playerX, room13.game.playerO].includes(m.sender))) return m.reply(`⚠️ ${user.Language === 'es' ? 'Todavía estás en el juego' : user.Language === 'en' ? 'You"re still in the game' : user.Language === 'ar' ? ' أنت لا تزال في اللعبة' : user.Language === 'pt' ? 'Você ainda está no jogo' : user.Language === 'id' ? 'Anda masih dalam permainan' : user.Language === 'rs' ? 'Ты все еще в игре' : user.Language}`)
+if (Object.values(this.game).find(room13 => room13.id.startsWith('tictactoe') && [room13.game.playerX, room13.game.playerO].includes(m.sender))) return m.reply(`${lenguaje.game.text13}`)
 let room13 = Object.values(this.game).find(room13 => room13.state === 'WAITING' && (text ? room13.name === text : true))
 if (room13) {
 room13.o = m.chat
@@ -664,17 +659,15 @@ O: '❌',
 7: '7️⃣',
 8: '8️⃣',
 9: '9️⃣', }[v]})
-let str = `*\`🕹 ${user.Language === 'es' ? 'ＴＲＥＳ ＥＮ ＲＡＹＡ' : user.Language === 'en' ? 'THREE IN A TAIL' : user.Language === 'ar' ? ' ثلاثة في الذيل' : user.Language === 'pt' ? 'JOGO DO GALO' : user.Language === 'id' ? 'TIGA DALAM EKOR' : user.Language === 'rs' ? 'ТРИ В ХВОСТЕ' : user.Language} 🎮\`*
-
-🎮👾 ${user.Language === 'es' ? 'ᴇsᴘᴇʀᴀɴᴅᴏ ᴀ' : user.Language === 'en' ? 'Waiting for:' : user.Language === 'ar' ? ' انتظر ل:' :  user.Language === 'pt' ? 'Esperando por:' : user.Language === 'id' ? 'Menunggu:' : user.Language === 'rs' ? 'В ожидании:' : user.Language} @${room13.game.currentTurn.split('@')[0]} ${user.Language === 'es' ? 'ᴄᴏᴍᴏ ᴘʀɪᴍᴇʀ ᴊᴜɢᴀᴅᴏʀ' :  user.Language === 'en' ? 'As the first player' : user.Language === 'ar' ? ' كأول لاعب' :  user.Language === 'pt' ? 'Como o primeiro jogador' : user.Language === 'id' ? 'Sebagai pemain pertama' : user.Language === 'rs' ? 'Как первый игрок' : user.Language}
+let str = `${lenguaje.game.text14} @${room13.game.currentTurn.split('@')[0]} ${lenguaje.game.text15}
 
 ${arr.slice(0, 3).join('')}
 ${arr.slice(3, 6).join('')}
 ${arr.slice(6).join('')}
  
-▢ ${user.Language === 'es' ? '*𝐒𝐀𝐋𝐀 :*' : user.Language === 'en' ? '*LIVING ROOM :*' : user.Language === 'ar' ? '*غرفة المعيشة :*' : user.Language === 'pt' ? '*SALA :*' : user.Language === 'id' ? '*RUANG TAMU :*' : user.Language === 'rs' ? '*ГОСТИНАЯ :*' : user.Language} ${room13.id}
+▢ ${lenguaje.game.text16} ${room13.id}
  
-▢ ${user.Language === 'es' ? '*𝐑𝐄𝐆𝐋𝐀𝐒 :*\n\n* ʜᴀᴢ 3 ғɪʟᴀs ᴅᴇ sɪᴍʙᴏʟᴏs ᴠᴇʀᴛɪᴄᴀʟᴇs, ʜᴏʀɪᴢᴏɴᴛᴀʟᴇs ᴏ ᴅɪᴀɢᴏɴᴀʟᴇs ᴘᴀʀᴀ ɢᴀɴᴀʀ\n* ᴇsᴄʀɪʙᴇ *rendirse* para rendirte y admitir la derrota.' : user.Language === 'en' ? '*RULES :*\n\n* make 3 rows of vertical, horizontal or diagonal symbols to win\n* write *delttt* to give up and admit defeat null.' : user.Language === 'ar' ? '*قواعد :*\n\n* قم بعمل 3 صفوف من الرموز الرأسية أو الأفقية أو القطرية للفوز\n*اكتب *delttt* للاستسلام والاعتراف بالهزيمة null.' : user.Language === 'pt' ? '*REGRAS :*\n\n* faça 3 linhas de símbolos verticais, horizontais ou diagonais para ganhar\n* escreva *delttt* para desistir e admitir a derrota nula.' : user.Language === 'id' ? '*ATURAN :*\n\n* buat 3 baris simbol vertikal, horizontal atau diagonal untuk menang\n*tulis *delttt* untuk menyerah dan mengaku kalah null.' : user.Language === 'rs' ? '*ПРАВИЛА :*\n\n* составьте 3 ряда вертикальных, горизонтальных или диагональных символов, чтобы выиграть\n* напишите *delttt*, чтобы сдаться и признать поражение нулевым.' : user.Language}`
+▢ ${lenguaje.game.text17}`
 if (room13.x !== room13.o) await conn.sendText(room13.x, str, m, { mentions: parseMention(str) } )
 await conn.sendText(room13.o, str, m, { mentions: parseMention(str) } )
 } else {
@@ -685,7 +678,7 @@ game: new TicTacToe(m.sender, 'o'),
 state: 'WAITING'
 }
 if (text) room13.name = text
-m.reply(`*⏳ ${user.Language === 'es' ? 'ᴇsᴘᴇʀᴀɴᴅᴏ ᴀʟ sɪɢᴜɪᴇɴᴛᴇ ᴊᴜɢᴀᴅᴏ*' : user.Language === 'en' ? 'Waiting for the next one playing' : user.Language === 'ar' ? ' في انتظار اللعب التالي' : user.Language === 'pt' ? 'Esperando o próximo jogando' : user.Language === 'id' ? 'Menunggu yang berikutnya diputar' : user.Language === 'rs' ? 'Жду следующей игры' : user.Language}` + (text ? ` ${user.Language === 'es' ? '*ᴇsᴄʀɪʙᴀ ᴇʟ sɪɢᴜɪᴇɴᴛᴇ ᴄᴏᴍᴀɴᴅᴏ:' : user.Language === 'en' ? '*Type the following command:' : user.Language === 'ar' ? '*اكتب الأمر التالي:' : user.Language === 'pt' ? '*Digite o seguinte comando:' : user.Language === 'id' ? '*Ketikkan perintah berikut:' : user.Language === 'rs' ? '*Введите следующую команду:' : user.Language} ${prefix + command} ${text}\n\n🎁 ${user.Language === 'es' ? 'ʀᴇᴄᴏᴍᴘᴇɴsᴀ :' : user.Language === 'en' ? 'Reward:' : user.Language === 'ar' ? ' جائزة:' : user.Language === 'pt' ? 'Recompensa :' : user.Language === 'id' ? 'Hadiah:' : user.Language === 'rs' ? 'Награда:' : user.Language} *4999 XP*` : ''))
+m.reply(`${lenguaje.game.text18}` + (text ? ` ${lenguaje.game.text19} ${prefix + command} ${text}\n\n🎁 ${lenguaje.game.text20} *4999 XP*` : ''))
 this.game[room13.id] = room13
 }}
 break
@@ -696,9 +689,9 @@ this.game = this.game ? this.game : {}
 try {
 if (this.game) { 
 delete this.game
-conn.sendText(m.chat, `✅ ${user.Language === 'es' ? 'sᴇ ʀᴇɪɴɪᴄɪᴏ ʟᴀ sᴇsɪᴏɴ ᴅᴇ *ᴛɪᴄᴛᴀᴄᴛᴏᴇ 🎮*' : user.Language === 'en' ? '*Tictactoe session restarted 🎮*' : user.Language === 'ar' ? '*تم استئناف جلسة التيكتاكتو 🎮*' : user.Language === 'pt' ? '*Sessão do Tictactoe reiniciada 🎮*' : user.Language === 'id' ? '*Sesi Tikactoe dimulai kembali 🎮*' : user.Language === 'rs' ? '*Сеанс Тиктакто перезапущен 🎮*' : user.Language}`, m)
+conn.sendText(m.chat, `${lenguaje.game.text21}`, m)
 } else if (!this.game) {
-m.reply(`⚠️ ${user.Language === 'es' ? 'ɴᴏ ᴇsᴛᴀs ᴇɴ ᴘᴀʀᴛɪᴅᴀ ᴅᴇ ᴛɪᴄᴛᴀᴄᴛᴏᴇ' : user.Language === 'en' ? 'You are not in any tictactoe games' : user.Language === 'ar' ? ' أنت لست في أي ألعاب tictactoe' : user.Language === 'pt' ? 'Você não está em nenhum jogo do tictactoe' : user.Language === 'id' ? 'Anda tidak sedang mengikuti permainan tictactoe mana pun' : user.Language === 'rs' ? 'Тебя нет ни в одной игре в крестики-нолики' : user.Language} 🎮`)
+m.reply(`${lenguaje.game.text22}`)
 } else throw '?'
 } catch (e) {
 }}
@@ -738,21 +731,20 @@ break
 case 'transferir': case 'transfer': case 'regalar': {
 let items = ['money', 'exp', 'limit']
 this.confirm = this.confirm ? this.confirm : {}
-if (this.confirm[m.sender]) return conn.sendText(m.chat, `*⚠️ ${user.Language === 'es' ? 'estas haciendo una transferencia' : user.Language === 'en' ? 'you are making a transfer' : user.Language === 'ar' ? ' أنت تقوم بالتحويل' : user.Language === 'pt' ? 'você está fazendo uma transferência' : user.Language === 'id' ? 'Anda sedang melakukan transfer' : user.Language === 'rs' ? 'вы делаете перевод' : user.Language}*`, m)
+if (this.confirm[m.sender]) return conn.sendText(m.chat, `*${lenguaje.transfer.text4}`, m)
 let user = global.db.data.users[m.sender]
 let item = items.filter((v) => v in user && typeof user[v] == 'number')
-let lol = `*⚠️ ${user.Language === 'es' ? 'Uso correcto del comando :' : user.Language === 'en' ? 'Correct use of the command:' : user.Language === 'ar' ? ' الاستخدام الصحيح للأوامر:' : user.Language === 'pt' ? 'Uso correto do comando:' : user.Language === 'id' ? 'Penggunaan perintah yang benar:' : user.Language === 'rs' ? 'Правильное использование команды:' : user.Language}*\n*${prefix + command}* [tipo] [cantidad] [@user]\n\n> ${user.Language === 'es' ? '*Ejemplo :*' : user.Language === 'en' ? '*Example :*' : user.Language === 'ar' ? '*مثال :*' : user.Language === 'pt' ? '*Exemplo :*' : user.Language === 'id' ? '*Contoh :*' : user.Language === 'rs' ? '*Пример :*' : user.Language}\n• ${prefix + command} exp 100 @0\n\n📍 ${user.Language === 'es' ? 'Artículos transferibles' : user.Language === 'en' ? 'Transferable items' : user.Language === 'ar' ? ' العناصر القابلة للتحويل' : user.Language === 'pt' ? 'itens transferíveis' : user.Language === 'id' ? 'Barang yang dapat dipindahtangankan' : user.Language === 'rs' ? 'Передаваемые предметы' : user.Language}\n╔═════ೋೋ═════╗\n● *limit* = Diamante\n● *exp* = Experiencia\n● *money* = coins\n╚════ ≪ •❈• ≫ ════╝`
+let lol = `${lenguaje.transfer.text5(prefix, command)}`
 let type = (args[0] || '').toLowerCase()
 if (!item.includes(type)) return conn.sendTextWithMentions(m.chat, lol, m)
 let count = Math.min(Number.MAX_SAFE_INTEGER, Math.max(1, (isNumber(args[1]) ? parseInt(args[1]) : 1))) * 1
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : args[2] ? (args[2].replace(/[@ .+-]/g, '') + '@s.whatsapp.net') : ''
-if (!who) return conn.sendMessage(m.chat, {text: `⚠️ ${user.Language === 'es' ? '*Etiquetas al usuario que desea hacer la transferencia.*' : user.Language === 'en' ? '*Tags the user who wants to make the transfer.*' : user.Language === 'ar' ? '*ضع علامة على المستخدم الذي يريد إجراء النقل.*' : user.Language === 'pt' ? '*Marca o usuário que deseja fazer a transferência.*' : user.Language === 'id' ? '*Menandai pengguna yang ingin melakukan transfer.*' : user.Language === 'rs' ? '*Отмечает пользователя, который хочет осуществить перевод.*' : user.Language}`,  mentions: [m.sender]}, {quoted: m});
-if (!(who in global.db.data.users)) return m.reply(`❌ ${user.Language === 'es' ? '*El Usuario no está en mi base de datos*' : user.Language === 'en' ? '*User is not in my database*' : user.Language === 'ar' ? '*المستخدم ليس في قاعدة البيانات الخاصة بي*' : user.Language === 'pt' ? '*O usuário não está no meu banco de dados*' : user.Language === 'id' ? '*Pengguna tidak ada dalam database saya*' : user.Language === 'rs' ? '*Пользователя нет в моей базе данных*' : user.Language}`)
-if (user[type] * 1 < count) return m.reply(`⚠️${user.Language === 'es' ? `*No tienes suficientes ${type} para transferir*` : user.Language === 'en' ? `*You don't have enough ${type} to transfer*` : user.Language === 'ar' ? `*ليس لديك ما يكفي من ${type} للتحويل*` : user.Language === 'pt' ? `*Você não tem ${type} suficiente para transferir*` : user.Language === 'id' ? `*Anda tidak mempunyai cukup ${type} untuk mentransfer*` : user.Language === 'rs' ? `*У вас недостаточно ${type} для перевода*` : user.Language}`)//`
-let confirm = `${user.Language === 'es' ? '¿ESTA SEGURO QUE DESEA TRANSFERIR' : user.Language === 'en' ? 'ARE YOU SURE YOU WANT TO TRANSFER' : user.Language === 'ar' ? ' هل أنت متأكد من أنك تريد النقل' : user.Language === 'pt' ? 'VOCÊ TEM CERTEZA QUE QUER TRANSFERIR' : user.Language === 'id' ? 'APAKAH ANDA YAKIN INGIN TRANSFER' : user.Language === 'rs' ? 'ВЫ УВЕРЕНЫ, ЧТО ХОТИТЕ ПЕРЕДАТЬ?' : user.Language} ${count} ${type} a @${(who || '').replace(/@s\.whatsapp\.net/g, '')}?\n\n> 
-${user.Language === 'es' ? '*Tienes 60 segundos para confirmar*\n\n*• Escriba:*\n* si = *para acertar*\n* no = *para cancelar*' : user.Language === 'en' ? '*You have 60 seconds to confirm*\n\n*• Type:*\n* yes = *to succeed*\n* no = *to cancel*' : user.Language === 'ar' ? '*أمامك 60 ثانية للتأكيد*\n\n*• النوع:*\n* Yes = *للنجاح*\n* no = *للإلغاء*' : user.Language === 'pt' ? '*Você tem 60 segundos para confirmar*\n\n*• Digite:*\n* yes = *para ter sucesso*\n* no = *para cancelar*' : user.Language === 'id' ? '*Anda memiliki waktu 60 detik untuk mengonfirmasi*\n\n*• Ketik:*\n* yes = *untuk berhasil*\n* no = *untuk membatalkan*' : user.Language === 'rs' ? '*У вас есть 60 секунд на подтверждение*\n\n*• Введите:*\n* да = *для успеха*\n* нет = *для отмены*' : user.Language}`
+if (!who) return conn.sendMessage(m.chat, {text: `${lenguaje.transfer.text6}`,  mentions: [m.sender]}, {quoted: m});
+if (!(who in global.db.data.users)) return m.reply(`${lenguaje.transfer.text7}`)
+if (user[type] * 1 < count) return m.reply(`${lenguaje.transfer.text8(type)}`)//`
+let confirm = `${lenguaje.transfer.text9} ${count} ${type} a @${(who || '').replace(/@s\.whatsapp\.net/g, '')}?\n\n>${lenguaje.transfer.text10}`
 await conn.sendTextWithMentions(m.chat, confirm, m)
-this.confirm[m.sender.split('@')[0]] = { sender: m.sender, to: who, message: m, type, count, timeout: setTimeout(() => (m.reply(`⚠️ ${user.Language === 'es' ? '*Se acabó el tiempo, no se obtuvo respuesta. Transferencia cancelada.*' : user.Language === 'en' ? '*Time ran out, no response received. Transfer cancelled.*' : user.Language === 'ar' ? '*لقد انتهى الوقت ولم يتم الرد. تم إلغاء النقل.*' : user.Language === 'pt' ? '*O tempo acabou, nenhuma resposta foi recebida. Transferência cancelada.*' : user.Language === 'id' ? '*Waktu habis, tidak ada tanggapan yang diterima. Transfer dibatalkan.*' : user.Language === 'rs' ? '*Время истекло, ответа не получено. Перенос отменен.*' : user.Language}`), delete this.confirm[m.sender.split('@')[0]]), 60 * 1000)}}
+this.confirm[m.sender.split('@')[0]] = { sender: m.sender, to: who, message: m, type, count, timeout: setTimeout(() => (m.reply(`${lenguaje.transfer.text11}`), delete this.confirm[m.sender.split('@')[0]]), 60 * 1000)}}
 break
       
 //stickers   
@@ -800,13 +792,13 @@ break
 case 'id': {m.reply(from)} break 
 case 'getcase':  
 if (!isCreator) return reply(info.owner)
-if (!text) return m.reply(`${user.Language === 'es' ? '*Que comando esta buscando o que?*' : user.Language === 'en' ? '*What command are you looking for?*' : user.Language === 'ar' ? '*ما هو الأمر الذي تبحث عنه؟*' : user.Language === 'pt' ? '*Que comando esta buscando o que?*' : user.Language === 'id' ? '*Perintah apa yang kamu cari?*' : user.Language === 'rs' ? '*Какую команду вы ищете?*' : user.Language}`) 
+if (!text) return m.reply(`*Que comando esta buscando o que?*`) 
 try {  
 bbreak = 'break'  
 reply('case ' + `'${args[0]}'` + fs.readFileSync('./main.js').toString().split(`case '${args[0]}'`)[1].split(bbreak)[0] + bbreak) 
 } catch (err) { 
 console.error(err) 
-reply(`${user.Language === 'es' ? 'Error, tal vez no existe el comando' : user.Language === 'en' ? 'Error, maybe the command does not exist' : user.Language === 'ar' ? ' خطأ، ربما الأمر غير موجود' : user.Language === 'pt' ? 'Erro, talvez o comando não exista' : user.Language === 'id' ? 'Error, mungkin perintahnya tidak ada' : user.Language === 'rs' ? 'Ошибка, возможно команда не существует' : user.Language}`)} 
+reply(`Error, tal vez no existe el comando`)} 
 break
 case 'public': case 'publico': {
 if (!isCreator) return reply(info.owner)
