@@ -60,7 +60,7 @@ m.reply(teks)})
 
 if (command == 'imagen') {
 const {googleImage} = require('@bochilteam/scraper') 
-if (budy.includes('gore') || budy.includes('cp')|| budy.includes('porno')|| budy.includes('Gore')|| budy.includes('rule')|| budy.includes('CP')|| budy.includes('Rule34')) return m.reply(`😐 ${user.Language === 'es' ? 'NO PIDA BOLUDECES' :  user.Language === 'en' ? 'I"M NOT GOING TO SEND THAT, DON"T ASK FOR BULLSHIT' : user.Language === 'ar' ? ' لن أرسل ذلك، لا تسأل عن الهراء' : user.Language === 'pt' ? 'NÃO VOU ENVIAR ISSO, NÃO PEÇA BULLSHIT' : user.Language === 'id' ? 'AKU TIDAK AKAN MENGIRIMKAN ITU, JANGAN MINTA BULLSHIT' : user.Language === 'rs' ? 'Я НЕ БУДУ ЭТО ОТПРАВЛЯТЬ, НЕ ПРОШИТЕ ерунду' : user.Language}`) 
+if (budy.includes('gore') || budy.includes('cp')|| budy.includes('porno')|| budy.includes('Gore')|| budy.includes('rule')|| budy.includes('CP')|| budy.includes('Rule34')) return m.reply(`😐 NO PIDA BOLUDECES`) 
 if (!text) return m.reply(`${lenguaje.lengua.ejemplo}\n${prefix + command} gatito`)
 try {  
 image = await fetchJson(`https://api.akuari.my.id/search/googleimage?query=${text}`)
@@ -291,7 +291,7 @@ const moment = require('moment-timezone')
   const tzAS = moment().tz('Asia/Jakarta').format('DD/MM HH:mm');
   const tzAF = moment().tz('Africa/Malabo').format('DD/MM HH:mm');
   await conn.sendMessage(m.chat, {text: `
-  ┏╼┅┅⪻ \`\`\`${user.Language === 'es' ? 'ZONA-HORARIA' : user.Language === 'en' ? 'TIME ZONE' : user.Language === 'ar' ? ' وحدة زمنية' : user.Language === 'pt' ? 'FUSO HORÁRIO' : user.Language === 'id' ? 'ZONA WAKTU' : user.Language === 'rs' ? 'ЧАСОВОЙ ПОЯС' : user.Language} 🗺️\`\`\` ⪼┅┅┅┓
+  ┏╼┅┅⪻ \`\`\`ZONA-HORARIA 🗺️\`\`\` ⪼┅┅┅┓
 ┋• Perú       : ${tzPE}
 ┋• México     : ${tzMX}
 ┋• Bolivia    : ${tzBO}
@@ -313,7 +313,7 @@ const moment = require('moment-timezone')
 ┋• Asia       : ${tzAS}
 ┋• África     : ${tzAF}
 ┋┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┋${String.fromCharCode(8206).repeat(850)} 💻 ${user.Language === 'es' ? '*ᴢᴏɴᴀ ʜᴏʀᴀʀɪᴀ ᴅᴇʟ sᴇʀᴠɪᴅᴏʀ ᴀᴄᴛᴜᴀʟ:*' : user.Language === 'en' ? '*Current server time zone:*' : user.Language === 'ar' ? '*المنطقة الزمنية الحالية للخادم:*' : user.Language === 'pt' ? '*Fuso horário atual do servidor:*' : user.Language === 'id' ? '*Zona waktu server saat ini:*' : user.Language === 'rs' ? '*Текущий часовой пояс сервера:*' : user.Language}
+┋${String.fromCharCode(8206).repeat(850)} 💻 *ᴢᴏɴᴀ ʜᴏʀᴀʀɪᴀ ᴅᴇʟ sᴇʀᴠɪᴅᴏʀ ᴀᴄᴛᴜᴀʟ:*
 ┋ *[ ${Intl.DateTimeFormat().resolvedOptions().timeZone} ]*
 ┋ *${moment().tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format('DD/MM/YY HH:mm:ss')}*
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┉┛`}, {quoted: m})

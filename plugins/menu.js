@@ -23,7 +23,7 @@ let wa = m.key.id.length > 21 ? 'Android' : m.key.id.substring(0, 2) == '3A' ? '
 let submenu = `╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⪩
 ┊┏━━━━━━━━━━━━━━•
 ┊┃ ┏━━━━━━━━━━━━━━•
-┊┃ ┃ \`👥 ${usuario.Language === 'es' ? 'INFO DEL USUARIO' : usuario.Language === 'en' ? 'USER INFO' :  usuario.Language === 'ar' ? ' معلومات المستخدم' : usuario.Language === 'pt' ? 'INFORMAÇÃO DE USUÁRIO' : usuario.Language === 'id' ? 'INFO PENGGUNA' : usuario.Language === 'rs' ? 'ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ' : usuario.Language}\`
+┊┃ ┃ \`👥 INFO DEL USUARIO\`
 ┊┃ ┗━━━━━━━━━━━━━━•
 ┊┃ ┏━━━━━━━━━━━━━━•
 ┊┃ ┃❐ ${lenguaje.menu.text5} @${sender.split("@")[0]} 
