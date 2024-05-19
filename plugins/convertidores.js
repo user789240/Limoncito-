@@ -42,7 +42,7 @@ console.log(e)}}
 async function efect2(m, text, prefix, command, conn) {
 if (global.db.data.users[m.sender].registered < true) return m.reply(info.registra)
 if (global.db.data.users[m.sender].banned) return
-if (!text) return m.reply(`\`? ?????? ?? ?????\`
+if (!text) return m.reply(`\`🪄 𝐋𝐈𝐒𝐓𝐀𝐒 𝐃𝐄 𝐋𝐎𝐆𝐎𝐒\`
 
 * ${prefix}logololi
 * ${prefix}neon
@@ -70,17 +70,16 @@ if (!text) return m.reply(`\`? ?????? ?? ?????\`
 * ${prefix}3dbox
 * ${prefix}graffiti2
 
-������������������������������������������������
-
-???? ?? ??????? ?? ?? ????????? ?????? ??????? :
+────────────────────────
+𝐔𝐬𝐚𝐫 𝐞𝐥 𝐜𝐨𝐦𝐚𝐧𝐝𝐨 𝐝𝐞 𝐥𝐚 𝐬𝐢𝐠𝐮𝐢𝐞𝐧𝐭𝐞 𝐦𝐚𝐧𝐞𝐫𝐚 𝐞𝐣𝐞𝐦𝐩𝐥𝐨 :
 ${prefix}neon NovaBot
 
-?? ???? ?? ??? ???? ????? ????? ???? ?? ???? ?????, ??????? :
+𝐄𝐧 𝐜𝐚𝐬𝐨 𝐝𝐞 𝐪𝐮𝐞 𝐝𝐢𝐠𝐚 𝐟𝐚𝐥𝐭𝐚 𝐭𝐞𝐱𝐭𝐨 𝐮𝐬𝐚𝐫 𝐝𝐞 𝐞𝐬𝐭𝐚 𝐟𝐨𝐫𝐦𝐚, 𝐄𝐣𝐞𝐦𝐩𝐥𝐨 :
 ${prefix}marvel texto1|texto2`) 
 
 let [a, e] = text.split `+`   
 if (!text.split) return m.reply(`Falta texto`) 
-m.react('?')
+m.react('🕕')
 try {
 let link
 if (/logololi/.test(command)) link = global.API('fgmods', '/api/maker/loli', { text }, 'apikey')
@@ -107,8 +106,8 @@ if (/ninja/.test(command)) link = global.API('fgmods', '/api/textpro/ninja', { t
 if (/future/.test(command)) link = global.API('fgmods', '/api/textpro/futuristic', { text }, 'apikey')
 if (/3dbox/.test(command)) link = global.API('fgmods', '/api/textpro/3dboxtext', { text }, 'apikey')
 if (/graffiti2/.test(command)) link = global.API('fgmods', '/api/textpro/graffiti2', { text: a, text2: e}, 'apikey')
-conn.sendFile(m.chat, link, 'logo.png', `? ???? ?? ???? ?????????????!!\n\n? ??????: ${command}`, m)
-m.react('?')
+conn.sendFile(m.chat, link, 'logo.png', `🪄 𝐓𝐎𝐌𝐀 𝐓𝐔 𝐋𝐎𝐆𝐎 𝐏𝐄𝐑𝐒𝐎𝐍𝐀𝐋𝐈𝐙𝐀𝐃𝐎!!\n\n❀ 𝐄𝐅𝐄𝐂𝐓𝐎: ${command}`, m)
+m.react('🪄')
 } catch (e) {  
 m.reply(`${info.error} ${e}`)
 console.log(e)}}
@@ -163,10 +162,10 @@ throw m.reply(info.error)}
 m.reply(lenguaje.sms.text7)}}
 
 if (command == 'txt') {
-if (!text) return return m.reply(`Y el texto?, Que quieres te escribar?`) 
-m.react('??')
+if (!text) return m.reply(`⚠️ Y el texto?, Que quieres te escribar?`) 
+m.react('📝')
 let img = global.API('fgmods', '/api/maker/txt', { text: text }, 'apikey')
-conn.sendFile(m.chat, img, 'img.png', `?? ${lenguaje['exito']()}`, m)}}
+conn.sendFile(m.chat, img, 'img.png', `📝 ${lenguaje['exito']()}`, m)}}
 
 module.exports = {efec, convertidores, efect2}
 
