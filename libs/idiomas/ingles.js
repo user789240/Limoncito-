@@ -11,6 +11,21 @@ const purgesessions = () => { return `╭━─━─━─≪🔆≫─━─�
 const purgesubbots  = () => { return `╭━─━─━─≪🔆≫─━─━─━╮\n│AUTO_PURGE_SESSIONS_SUB-BOTS\n│ DELETED FILES ✅\n╰━─━─━─≪🔆≫─━─━─━╯` }
 const purgeoldfiles = () => { return `╭━─━─━─≪🔆≫─━─━─━╮\n│AUTO_PURGE_OLDFILES\n│DELETED FILES ✅\n╰━─━─━─≪🔆≫─━─━─━╯` }
 
+const console = { 
+text1: ` BONDING METHOD`, 
+text2: ` HOW WOULD YOU LIKE TO CONNECT?`, 
+text3: ` ⇢ Option 1:`, 
+text4: ` QR code`, 
+text5: ` ⇢ Option 2:`, 
+text6: ` 8-digit code.`, 
+text7: ` Write only the number of`, 
+text8: ` the option to connect.`, 
+text9: (chalk) => ` ONLY ALLOWED NUMBERS THAT ARE NOT ${chalk.bold.greenBright("1")} O ${chalk.bold.greenBright("2")}, NEITHER LETTERS NOR SPECIAL SYMBOLS.\n${chalk.bold.yellowBright(" TIP: COPY THE OPTION NUMBER AND PASTE IT INTO THE CONSOLE.")}`, 
+text10: `🟢 Start with the country code of your WhatsApp number, for example: +59178862672`, 
+text11: `🟢 Enter the number that will be bot\nFor example: +59178862672`, 
+text12: `❌ Make sure to add the country code.`, 
+text13: `👑 LINKING CODE 👑:` }
+
 //call
 const smscall = () => { return `*You will be blocked*\n_ Reason: to carry out a` }
 const smscall2 = () => { return `*If you accidentally called contact my creator to unblock you.*` }
@@ -91,7 +106,15 @@ const smsAntiLink2 = () => { return `🤨 That is not allowed rat, you will be e
 const smsAntiLink3 = () => { return `Save you fucking I'm not an admin 🙄\n\n*[ CALL TO THE ADMINS ]*` }
 const smsAntiLink4 = () => { return `ᵀʰᵉ ᵇᵒᵗ ⁿᵉᵉᵈˢ ᵗᵒ ᵇᵉ ᵃᵈᵐᶦⁿ ᵗᵒ ᵉˡᶦᵐᶦⁿᵃᵗᵉ ᵗʰᶦˢ ᵈᶦʳᵗʸ ʳᵃᵗ` }//
 const smsAntiLink5 = () => { return `Ill save you because you're an admin: v` }
+const smsAntiLink6 = () => { return `To save yourself, kid, I'm not an admin, I can't delete you` }
  
+ //allAntilink
+const AntiLink = () => { return `*LINK DETECTED 📢*` }
+const AntiLink2 = () => { return `You will be removed from this group` }
+const AntiToxic = (m, isToxic) => { return `Two @${m.sender.split('@')[0]} say that word *(${isToxic})* Prohibited in this group, do not be toxic\n\nWARNING` }
+const AntiToxic2 = () => { return `If you exceed 4 warnings, you will be removed from this group 😐....` }
+const viewOnce = () => { return `Nothing can be hidden here.` }
+
 //autosticker
 const smsAutoSicker = () => { return `🤡 Hey, where the hell did you see a stick that lasts so long stupid 🤣. (Maximum 15 seconds)` }
 
@@ -687,4 +710,41 @@ const cuenta = (nna, md, yt, tiktok, fb) => { return `*Welcome to the official a
 
 *If you have doubts, suggestions or questions, you can write to me on Facebook*` }
 
-module.exports = { lenguaje, exito, tmp, session, errorsession, archivo, AvisoMG, archborrado, archivoborrado, purgesessions, purgesubbots, purgeoldfiles, smscall, smscall2, smsAvisos, smsAvisos2, smsAvisos3, smsAvisos4, smsAvisos5, smsAvisos6, smsAvisos7, smsAvisos8, smsAvisos9, smsWel, smsWel2, smsWel3, smsWel4, smsWel5, smsWel6, smsWel7, smsWel8, smsWel9, smsWel10, smsWel11, smsBye, smsBye2, smsBye3, smsBye4, smsBye5, smsConexion, smsEscaneaQR, smsConectado,  smsConexionOFF, smsConexioncerrar, smsConexionperdida, smsConexionreem, smsConexionreinicio, smsConexiontiem, smsConexiondescon, nivel, nivel2, admin, botAdmin, propietario, group, private, bot, error, advertencia, registra, limit, AntiNsfw, endLimit, result, lengua, sms, Bio, smsAntiFake, smsAntiArabe, smsAntiLink, smsAntiLink2, smsAntiLink3, smsAntiLink4, smsAntiLink5, smsAutoSicker, smsAutonivel, smsAutonivel2, smsAutonivel3, smsAutonivel4, smsAutonivel5, smsAutonivel6, smsAutonivel7, smsAutonivel8, smsAutonivel9, smsAntiPv, info, menu, jadibot, descargar, demote, promote, enable, grupos, juegos, nsfw, owner, ramdow, rpg, sticker, idioma, idioma2, smsReg, smsReg1, smsReg2, smsReg3, smsReg4, smsReg5, smsReg6, smsReg7, smsReg8, cuenta, consola}
+const game = { 
+text1: `*\`🎮 THREE IN A TAIL 🎮\`*`, 
+text2: `*YOU HAVE WON 🎉*\n*🎁 GET*`, 
+text3: `*A TIE 😹*`, 
+text4: `Turn of:`, 
+text5: `*Correct answer 🎉*\n\n*Winning you:*`, 
+text6: `⚠️ There are still unanswered questions in this chat`, 
+text7: `🧮 Difficulties available :`, 
+text8: `MATHEMATICS`, 
+text9: `¿How much is it :`, 
+text10: `Time`, 
+text11: `*Respond to this message with the answer*`, 
+text12: `⏳ *Time is up! The answer is:*`, 
+text13: `⚠️ You are still in the game`, 
+text14: `*\`🕹 THREE IN A TAIL 🎮\`*\n\n🎮👾 Waiting for`, 
+text15: `As the first player`, 
+text16: `*LIVING ROOM :*`, 
+text17: `*RULES :*\n\n*Make 3 rows of vertical, horizontal, or diagonal symbols to win*\nWrites *rendirse* to surrender and admit defeat`, 
+text18: `*⏳ Waiting for the next player*`, 
+text19: `*Write the following command:`, 
+text20: `Reward:`, 
+text21: `✅ The session restarted *ᴛɪᴄᴛᴀᴄᴛᴏᴇ 🎮*`, 
+text22: `⚠️ You are not in the game ᴛɪᴄᴛᴀᴄᴛᴏᴇ 🎮` }
+
+const transfer = {
+text1: `⚠️ Cancelled, the transfer will not be made.`, 
+text2: `✅ They were transferred correctly`, 
+text3: `Error transferring`, 
+text4: `⚠️ you are making a transfer*`, 
+text5: (prefix, command) => `*⚠️ correct use of the command :*\n*${prefix + command}* [tipo] [cantidad] [@user]\n\n> * Example :*\n• ${prefix + command} exp 100 @0\n\n📍 Transferable items\n╔═════ೋೋ═════╗\n● *limit* = Diamante\n● *exp* = Experience\n● *money* = coins\n╚════ ≪ •❈• ≫ ════╝`, 
+text6: `⚠️ *Tag the user who wants to make the transfer.*`, 
+text7: `❌ *The user is not in my database*`, 
+text8: (type) => `*⚠️ You do not have enough ${type} to transfer*`, 
+text9: `¿ARE YOU SURE YOU WANT TO TRANSFER`, 
+text10: `> *You have 60 seconds to confirm*\n\n*• Scribe:*\n* si = *to get it right*\n* no = *to cancel*`, 
+text11: `⚠️ *Time's up, no response received. Transfer canceled.*` }
+
+module.exports = { lenguaje, exito, tmp, session, errorsession, archivo, AvisoMG, archborrado, archivoborrado, purgesessions, purgesubbots, purgeoldfiles, smscall, smscall2, smsAvisos, smsAvisos2, smsAvisos3, smsAvisos4, smsAvisos5, smsAvisos6, smsAvisos7, smsAvisos8, smsAvisos9, smsWel, smsWel2, smsWel3, smsWel4, smsWel5, smsWel6, smsWel7, smsWel8, smsWel9, smsWel10, smsWel11, smsBye, smsBye2, smsBye3, smsBye4, smsBye5, smsConexion, smsEscaneaQR, smsConectado,  smsConexionOFF, smsConexioncerrar, smsConexionperdida, smsConexionreem, smsConexionreinicio, smsConexiontiem, smsConexiondescon, nivel, nivel2, admin, botAdmin, propietario, group, private, bot, error, advertencia, registra, limit, AntiNsfw, endLimit, result, lengua, sms, Bio, smsAntiFake, smsAntiArabe, smsAntiLink, smsAntiLink2, smsAntiLink3, smsAntiLink4, smsAntiLink5, smsAntiLink6, smsAutoSicker, smsAutonivel, smsAutonivel2, smsAutonivel3, smsAutonivel4, smsAutonivel5, smsAutonivel6, smsAutonivel7, smsAutonivel8, smsAutonivel9, smsAntiPv, info, menu, jadibot, descargar, demote, promote, enable, grupos, juegos, nsfw, owner, ramdow, rpg, sticker, idioma, idioma2, smsReg, smsReg1, smsReg2, smsReg3, smsReg4, smsReg5, smsReg6, smsReg7, smsReg8, cuenta, consola, console, AntiLink, AntiLink2, viewOnce, AntiToxic, AntiToxic2, game, transfer}
