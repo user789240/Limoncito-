@@ -831,12 +831,13 @@ await m.reply(stdout.toString())
 let updatee = execSync('git remote set-url origin https://github.com/elrebelde21/NovaBot-MD.git && git pull')
 await m.reply(updatee.toString())}  
 break
-case 'reiniciar': case 'restart': { 
-if (!isCreator) return reply(info.owner) 
+case 'reiniciar': case 'restart':
+if (!process.send) throw 'Dont: node main.js\nDo: node index.js'
+if (!isCreator) return reply(info.owner) 		
 m.reply(lenguaje.owner.text28)
-await delay(3 * 3000) 
-conn.ws.close()}   
-break  
+sleep(5000)
+process.send('reset')
+break
 /////////////////////////////////   
    
 //--------------------[ FUNCIONES ]-----------------------  
