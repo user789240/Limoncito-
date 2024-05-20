@@ -348,10 +348,10 @@ if (command == 'modojadibot' || command == 'jadibot') {
 if (!isCreator) return m.reply(info.owner)
 if (!text) return m.reply(`${lenguaje.enable.text}\n\n*• ${prefix + command} on*\n*• ${prefix + command} off*`)
 if (args[0] === "on") {
-global.db.data.chats[m.chat].jadibotmd = true
+global.db.data.chats[m.chat].jadibot = true
 m.reply(`✅ *${command}* ${lenguaje.enable.text1}`)
 } else if (args[0] === "off") {
-global.db.data.chats[m.chat].jadibotmd = false
+global.db.data.chats[m.chat].jadibot = false
 m.reply(`🟢 *${command}* ${lenguaje.enable.text2}`)}}
 
 if (command == 'autoread' || command == 'autovisto') {
