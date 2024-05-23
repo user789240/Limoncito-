@@ -679,12 +679,12 @@ color(moment().format('DD/MM/YY HH:mm:ss'), '#A1FFCE'),
 color(`\n╭━─━─━─≪ ${vs} ≫─━─━─━╮\n│${lenguaje['smsConectado']()}\n╰━─━━─━─≪ 🟢 ≫─━─━━─━╯` + receivedPendingNotifications, '#38ef7d')
 );
 
-if (!sock.user.connect) {
+/*if (!sock.user.connect) {
 await delay(3 * 1000)
 await sock.groupAcceptInvite(global.nna2)
 sock.user.connect = true
 return !1;
-}
+}*/
 }});
 
 sock.public = true
