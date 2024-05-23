@@ -1,6 +1,6 @@
 //Este Plugin esta en fase prueba en este bot Creado Por By @Alba070503 
 
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 
 var handler = async (m, { text, usedPrefix, command }) => {
   if (!text) throw "> *Hola, soy un servicio `Black Box Ai` un servicio capaz de programar códigos en todos los lenguajes y resolver problemas de programación, por ejemplo :*\n\n- #iabox Cómo hacer una página de inicio de sesión con `html`";
@@ -27,7 +27,7 @@ var handler = async (m, { text, usedPrefix, command }) => {
 handler.command = ['bb', 'blackbox', 'iabox'];
 handler.help = ['blackbox'];
 handler.tags = ['herramientas'];
-export default handler;
+export default handler;*/
 
 // NovaBot-MD - @elrebelde21
 // Thanks for Zoro API
