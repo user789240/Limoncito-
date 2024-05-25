@@ -575,7 +575,7 @@ user.afkReason = ''
 switch (prefix && command) { 
 case 'test': {
 const testI = generateWAMessageFromContent(from, { viewOnceMessage: { message: { "messageContextInfo": { "deviceListMetadata": {}, "deviceListMetadataVersion": 2 }, interactiveMessage: proto.Message.InteractiveMessage.create({ body: proto.Message.InteractiveMessage.Body.create({ text: '' }), footer: proto.Message.InteractiveMessage.Footer.create({ text: 'NovaBot' }), header: proto.Message.InteractiveMessage.Header.create({ title: 'Nova', subtitle: 'MarioJs', hasMediaAttachment: false }), nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({ buttons: [ { "name": "quick_reply", "buttonParamsJson": `{"display_text":"Menu","id":".menu"}` }, { "name": "quick_reply", "buttonParamsJson": `{"display_text":"Ping","id":".ping"}` }], })})}}}, {})
-return conn.relayMessage(testI.key.remoteJid, testI.message, { messageId: testI.key.id }, {quoted: m})
+conn.relayMessage(testI.key.remoteJid, testI.message, { messageId: testI.key.id }, {quoted: m})
 }
 break
 
