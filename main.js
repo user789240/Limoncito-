@@ -571,9 +571,24 @@ user.afkTime = -1
 user.afkReason = ''  
 }
 
+if (m.mtype === 'interactiveResponseMessage') {   
+let msg = m.message[m.mtype]  || m.msg
+if (msg.nativeFlowResponseMessage && !m.isBot ) { 
+let { id } = JSON.parse(msg.nativeFlowResponseMessage.paramsJson) || {}  
+if (id) {
+let emit = { 
+key : { ...m.key } , 
+message:{ extendedTextMessage : { text : id } } ,
+pushName : m.pushName,
+messageTimestamp  : m.messageTimestamp || 754785898978
+}
+return conn.ev.emit('messages.upsert', { messages : [ emit ] ,  type : 'notify'})
+}}}
+
 //ARRANCA LA DIVERSIÓN  
 switch (prefix && command) { 
 case 'test': {
+const test = generateWAMessageFromContent(from, { viewOnceMessage: { message: { "messageContextInfo": { "deviceListMetadata": {}, "deviceListMetadataVersion": 2 }, interactiveMessage: proto.Message.InteractiveMessage.create({ body: proto.Message.InteractiveMessage.Body.create({ text: 'gey' }), footer: proto.Message.InteractiveMessage.Footer.create({ text: "" }), header: proto.Message.InteractiveMessage.Header.create({ title: "", subtitle: "", hasMediaAttachment: false }), nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({buttons: [ {"name": "single_select", "buttonParamsJson": `{"title":"Click", "sections":[{"title":"", "highlight_label": "", "rows":[ {"header":"", "title":"Velocidad", "description":"", "id":".ping"}, {"header":"", "title":"Estado", "description":"", "id":".estado"}, {"header":"", "title":"Menu", "description":"", "id":".menu"}]}]}`}]}), contextInfo: {mentionedJid: [m.sender], forwardingScore: 1, isForwarded: true,forwardedNewsletterMessageInfo: { newsletterJid: '120363167110224268@newsletter', newsletterName: 'CuriosityBot', serverMessageId: '' }}})}}}, {})
 const testI = generateWAMessageFromContent(m.key.remoteJid, { viewOnceMessage: { message: { "messageContextInfo": { "deviceListMetadata": {}, "deviceListMetadataVersion": 2 }, interactiveMessage: proto.Message.InteractiveMessage.create({ body: proto.Message.InteractiveMessage.Body.create({ text: '' }), footer: proto.Message.InteractiveMessage.Footer.create({ text: 'NovaBot' }), header: proto.Message.InteractiveMessage.Header.create({ title: 'Nova', subtitle: 'MarioJs', hasMediaAttachment: false }), nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({ buttons: [ { "name": "quick_reply", "buttonParamsJson": `{"display_text":"Menu","id":".menu"}` }, { "name": "quick_reply", "buttonParamsJson": `{"display_text":"Ping","id":".ping"}` }], })})}}}, {})
 conn.relayMessage(testI.key.remoteJid, testI.message, { messageId: testI.key.id }, {quoted: m})
 }
