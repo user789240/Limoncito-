@@ -75,6 +75,10 @@ global.packname = "𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃"
 global.author = `${vs}`
  
 //---------[ IMAGEN ]---------
+global.img = "https://qu.ax/Zgqq.jpg"
+global.img1 = 'https://qu.ax/hNJk.jpg'
+global.img2 = 'https://qu.ax/jzhN.jpg'
+
 global.imagen1 = fs.readFileSync('./media/menu.jpg')
 global.imagen2 = fs.readFileSync('./media/menu2.jpg')
 global.imagen3 = fs.readFileSync('./media/menu3.jpg')
