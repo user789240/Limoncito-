@@ -373,20 +373,20 @@ text12: `\`\`\`🟢 ＬＩＳＴＡ ＤＥ ＣＯＭＡＮＤＯＳ 🟢\`\`\`
 text13: `*Palabras especificas para que el bot interactue con usted*`, 
 text14: `_*ᴼʲᶦᵗᵒ ᵉˢᶜʳᶦᵇᵉ ᵗᵃˡ ʸ ᶜᵒᵐᵒ ᵉˢᵗᵃ ᵉⁿ ᵉˡ ᵐᵉⁿˢᵃʲᵉ*_
 *ᵠᵘᶦᵉʳᵉ ᵃᵍʳᵉᵍᵃ ᵃˡᵍᵘⁿ ᵃᵘᵈᶦᵒ ⁿᵘᵉᵛᵒ ᵉˢᶜʳᶦᵇᶦʳˡᵉ ᵃ ᵐᶦ ᶜʳᵉᵃᵈᵒʳ ᵘʷᵘ*`,
-text15: (vs) => `*\`🤔 Que hay de nuevo? 🤗\`*\n\n*🌐 Nueva Version:* [ ${vs} ]\n\n*Nuevo comando:*
+text15: (vs) => `*\`🤔 Que hay de nuevo? 🤗\`*\n\n*🌐 Nueva Version:* [ ${vs} ]\n\n*Nuevo:*
 
-💢 Buscar información de NPM 
-#npmsearch   
+🚩 Se agrego un nuevo menu ahora (menu-lista) 
 
-🔵 𝐆𝐞𝐧𝐞𝐫𝐚𝐥 ժׁׅ݊ꪱׁׁׁׅׅׅׅ꯱ꫀׁׅܻ݊݊ꪀ̃ᨵׁׅׅׅ꯱ ᗪᗴ ʟᴇᴛʀᴀ :ᴠ
-#styletext 
-#style
+🚀 El play cambio ahora es con botones y eleccion (audio, video) 
 
-👾 Nuevo juegos:
-#ruletas
-#suerte
+✅ También se ha añadido el comando:
+/enable (el cual te mostrará una lista de opciones para proteger tu grupo y activar o desactivar funciones).
 
-> *⚡ Se esta mejoraron la estabilidad del bot.* 
+🟢 Por si fuera poco, ahora contamos con la inteligencia artificial de Gemini y Copitot, accesibles a través de los comandos:
+/gemini
+/copilot
+
+> Además, *⚡ hemos mejorado la estabilidad del bot*, para que disfrutes de una experiencia más fluida.
 
 ᴹᵃˢ ᶜᵒᵐᵃⁿᵈᵒ ᵉˡ ᶠᵘᵗᵘʳᵃ ᵛᵉʳˢᶦᵒⁿᵉˢ ᵠᵘᶦᵉʳᵉ ᵠᵘᵉ ᵃᵍʳᵉᵍᵘᵉ ᵃˡᵍᵘⁿ ᶜᵒᵐᵃⁿᵈᵒ ᵉˡ ᵉˢᵖᵉᶜᶦᵃˡ ᵉˢᶜʳᶦᵇᶦʳˡᵉ ᵃ ᵐᶦ ᶜʳᵉᵃᵈᵒʳ`, 
 text16: `\`🌐 REGLAS DEL BOT 🌐\`
