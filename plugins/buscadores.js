@@ -17,7 +17,7 @@ let user = global.db.data.users[m.sender]
 async function buscadores(m, command, conn, text, budy, from, fkontak, prefix, args, q, quoted, lang, lolkeysapi) {
 if (global.db.data.users[m.sender].registered < true) return m.reply(info.registra)
 if (global.db.data.users[m.sender].banned) return
-if (command == 'yts' || command == 'ytsearch') {
+if (command == 'yts' || command == 'ytsearch' || || command == 'playlist') {
 if (global.db.data.users[m.sender].level < 2) return m.reply(`${lenguaje['nivel']()} 2 ${lenguaje['nivel2']()} ${prefix}nivel`) 
 if (!text) return m.reply(`${lenguaje.lengua.ejem}\n${prefix + command} anime`)
 const yts = require("youtube-yts");
