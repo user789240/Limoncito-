@@ -1,5 +1,5 @@
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid, toAudio } = require('./fuctions2.js')
-const { default: makeWASocket, WAMessageStubType, relayMessage, areJidsSameUser, generateWAMessage, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, getAggregateVotesInPollMessage, proto } = require("@whiskeysockets/baileys")
+const { default: makeWASocket, WAMessageStubType, relayMessage, areJidsSameUser, generateWAMessage, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, getContentType, makeInMemoryStore, jidDecode, getAggregateVotesInPollMessage, proto } = require("@whiskeysockets/baileys")
 const chalk = require('chalk')
 const fs = require('fs')
 const child_process = require('child_process')
@@ -97,7 +97,33 @@ irq: 0
 exports.getBuffer = async (url, options) => {
 try {
 options ? options : {}
-const res = await axios({method: "get", url, headers: {'DNT': 1, 'Upgrade-Insecure-Request': 1 }, ...options, responseType: 'arraybuffer' }) 
+const res = await axios({
+method: "get",
+url,
+headers: {
+'DNT': 1,
+'Upgrade-Insecure-Request': 1
+},
+...options,
+responseType: 'arraybuffer'
+})
+return res.data
+} catch (err) {
+return err
+}
+}
+
+exports.fetchJson = async (url, options) => {
+try {
+options ? options : {}
+const res = await axios({
+method: 'GET',
+url: url,
+headers: {
+'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36'
+},
+...options
+})
 return res.data
 } catch (err) {
 return err
@@ -167,16 +193,6 @@ return moment.duration(now - moment(timestamp * 1000)).asSeconds()
 
 exports.getRandom = (ext) => {
 return `${Math.floor(Math.random() * 10000)}${ext}`
-}
-
-exports.fetchBuffer = async (url, options) => {
-try {
-options ? options : {}
-const res = await axios({method: "GET", url, headers: {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36", 'DNT': 1, 'Upgrade-Insecure-Request': 1}, ...options, responseType: 'arraybuffer' })
-return res.data
-} catch (err) {
-return err
-}
 }
 
 exports.fetchJson = async (url, options) => {
@@ -370,6 +386,15 @@ return admins
  */
 
 exports.smsg = (conn, m, hasParent) => {
+conn.downloadMediaMessage = async (message) => {
+let mime = (message.msg || message).mimetype || ''
+let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
+const stream = await downloadContentFromMessage(message, messageType)
+let buffer = Buffer.from([])
+for await(const chunk of stream) {
+buffer = Buffer.concat([buffer, chunk])}
+return buffer} 
+
 if (!m) return m
 let M = proto.WebMessageInfo
 let protocolMessageKey
@@ -696,8 +721,10 @@ console.error(m.error)
 
 if (m.message) {
 m.mtype = Object.keys(m.message)[0]
-m.body = m.message.conversation || m.message[m.mtype].caption || m.message[m.mtype].text || (m.mtype == 'listResponseMessage') && m.message[m.mtype].singleSelectReply.selectedRowId || (m.mtype == 'buttonsResponseMessage') && m.message[m.mtype].selectedButtonId || m.mtype
-m.msg = m.message[m.mtype]
+//m.mtype = getContentType(m.message)
+m.msg = (m.mtype == 'viewOnceMessage' ? m.message[m.mtype].message[getContentType(m.message[m.mtype].message)] : m.message[m.mtype])
+m.body = m.message.conversation || m.msg.caption || m.msg.text || (m.mtype == 'listResponseMessage') && m.msg.singleSelectReply.selectedRowId || (m.mtype == 'buttonsResponseMessage') && m.msg.selectedButtonId || (m.mtype == 'viewOnceMessage') && m.msg.caption || m.text
+//m.msg = m.message[m.mtype]
 if (m.mtype == 'protocolMessage' && m.msg.key) { 
 protocolMessageKey = m.msg.key; 
 if (protocolMessageKey == 'status@broadcast') protocolMessageKey.remoteJid = m.chat; 
@@ -1004,6 +1031,112 @@ m.copy = () => exports.smsg(conn, M.fromObject(M.toObject(m)))
      * @param {*} path 
      * @returns 
      */
+					
+conn.sendButton = async (jid, text = '', footer = '', buffer, buttons, copy, urls, quoted, options) => {
+  let img, video;
+
+  try {
+    if (/^https?:\/\//i.test(buffer)) {
+      const response = await fetch(buffer);
+      const contentType = response.headers.get('content-type');
+
+      if (/^image\//i.test(contentType)) {
+        img = await prepareWAMessageMedia({ image: { url: buffer } }, { upload: conn.waUploadToServer });
+      } else if (/^video\//i.test(contentType)) {
+        video = await prepareWAMessageMedia({ video: { url: buffer } }, { upload: conn.waUploadToServer });
+      } else {
+        console.error("Tipo MIME no compatible:", contentType);
+      }
+    } else {
+      const type = await conn.getFile(buffer);
+      if (/^image\//i.test(type.mime)) {
+        img = await prepareWAMessageMedia({ image: { url: buffer } }, { upload: conn.waUploadToServer });
+      } else if (/^video\//i.test(type.mime)) {
+        video = await prepareWAMessageMedia({ video: { url: buffer } }, { upload: conn.waUploadToServer });
+      }
+    }
+
+    const dynamicButtons = buttons.map(btn => ({
+      name: 'quick_reply',
+      buttonParamsJson: JSON.stringify({
+        display_text: btn[0],
+        id: btn[1]
+      }),
+    }));
+
+    if (copy && (typeof copy === 'string' || typeof copy === 'number')) {
+      dynamicButtons.push({
+        name: 'cta_copy',
+        buttonParamsJson: JSON.stringify({
+          display_text: 'Copy', copy_code: copy
+        })
+      });
+    }
+
+    if (urls && Array.isArray(urls)) {
+      urls.forEach(url => {
+        dynamicButtons.push({
+          name: 'cta_url',
+          buttonParamsJson: JSON.stringify({
+            display_text: url[0],
+            url: url[1],
+            merchant_url: url[1]
+          })
+        });
+      });
+    }
+
+    const interactiveMessage = {
+      body: { text: text },
+      footer: { text: footer },
+      header: {
+        hasMediaAttachment: false,
+        imageMessage: img ? img.imageMessage : null,
+        videoMessage: video ? video.videoMessage : null
+      },
+      nativeFlowMessage: {
+        buttons: dynamicButtons,
+        messageParamsJson: ''
+      }
+    };
+
+    if (!quoted) {
+      quoted = {};
+    }
+    if (typeof quoted.fromMe === 'undefined') {
+      quoted.fromMe = false; // o el valor por defecto adecuado
+    }
+
+    let msgL = generateWAMessageFromContent(jid, { viewOnceMessage: { message: { interactiveMessage } } }, { userJid: conn.user.jid, quoted });
+    await conn.relayMessage(jid, msgL.message, { messageId: msgL.key.id, ...options });
+  } catch (error) {
+    console.error("Error al enviar el botón:", error);
+  }
+};
+
+
+conn.sendList = async(jid, title, text, buttonText, listSections, quoted, options = {}) => {
+const sections = [...listSections];
+const message = {
+interactiveMessage: {
+header: {title: title} ,
+body: {text: text}, 
+nativeFlowMessage: {
+buttons: [
+{
+name: 'single_select',
+buttonParamsJson: JSON.stringify({
+title: buttonText,
+sections
+})
+}
+],
+messageParamsJson: ''
+}
+}
+}
+await conn.relayMessage(jid, { viewOnceMessage: { message } }, {});
+}
 					
 conn.getFile = async (PATH, saveToFile = false) => { 
 let res; let filename; 
