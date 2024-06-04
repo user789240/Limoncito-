@@ -26,7 +26,7 @@ let submenu = `╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⪩
 ┊┃ ┃ \`👥 INFO DEL USUARIO\`
 ┊┃ ┗━━━━━━━━━━━━━━•
 ┊┃ ┏━━━━━━━━━━━━━━•
-┊┃ ┃❐ ${lenguaje.menu.text5} @${sender.split("@")[0]} 
+┊┃ ┃${lenguaje.menu.text5} ${pushname} ${user.registered === true ? '✓' : ''}
 ┊┃ ┃${lenguaje.menu.text8} ${user.limit}
 ┊┃ ┃${lenguaje.menu.text9} ${user.level}
 ┊┃ ┃${lenguaje.menu.text10} ${user.role}
@@ -153,6 +153,8 @@ let buscadores = `╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⪩
 ┊┃ ❏ ${prefix}dall-e
 ┊┃ ❏ ${prefix}pinterest
 ┊┃ ❏ ${prefix}wikipedia
+┊┃ ❏ ${prefix}gemini
+┊┃ ❏ ${prefix}copilot
 ┊┃ ❏ ${prefix}wiki
 ┊┃ ❏ ${prefix}ia2 _(crear imagen con la (IA)_
 ┊┃ ❏ ${prefix}npmsearch _(Buscar información de NPM)_
@@ -413,84 +415,59 @@ let menuOwner = `╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⪩
 
 if (command == 'menu' || command == 'help') {
 m.react('💫') 
-let menu = `╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⪩
-┊┏━━━━━━━━━━━━━━•
-┊┃ ┏━━━━━━━━━━━━━━•
-┊┃ ┃${lenguaje['smsWel']()} @${sender.split("@")[0]} ${user.registered === true ? 'ͧͧͧͦꙶͣͤ✓' : ''} 👋🏻
-┊┃ ┗━━━━━━━━━━━━━━•
-┊┃ ┏━━━━━━━━━━━━━━•
-┊┃ ┃ \`ℹ️ ＩＮＦＯＢＯＴ\`
-┊┃ ┗━━━━━━━━━━━━━━•
-┊┃ ┏━━━━━━━━━━━━━━•
-┊┃ ┃${lenguaje.menu.text} [ ${prefix} ]
-┊┃ ┃${lenguaje.menu.text2} ${date}
-┊┃ ┃${lenguaje.menu.text3} ${time}
-┊┃ ┃${lenguaje.menu.text4} ${vs}
-┊┃ ┃${lenguaje.menu.text5} ${Object.keys(global.db.data.users).length}
-┊┃ ┃${lenguaje.menu.text6} ${runtime(process.uptime())}
-┊┃ ┃${lenguaje.menu.text7} ${conn.public ? 'publico' : 'privado'}
-┊┃ ┃${conn.user.id == global.numBot2 ? `${lenguaje.menu.textt} ` : `${lenguaje.menu.texttt} @${global.numBot.split`@`[0]}`}
-┊┃ ┗━━━━━━━━━━━━━━•
-┊┃ ┏━━━━━━━━━━━━━━•
-┊┃ ┃ \`👥 INFO DEL USUARIO\`
-┊┃ ┗━━━━━━━━━━━━━━•
-┊┃ ┏━━━━━━━━━━━━━━•
-┊┃ ┃${lenguaje.menu.text8} ${user.limit}
-┊┃ ┃${lenguaje.menu.text9} ${user.level}
-┊┃ ┃${lenguaje.menu.text10} ${user.role}
-┊┃ ┃❐ ᴇxᴘ : ${user.exp}
-┊┃ ┃❐ ᴄᴏɪɴs : ${user.money}
-┊┃ ┃ 
-┊┃ ┃${lenguaje.menu.text11} ${rtotalreg} de ${totalreg}
-┊┃ ┗━━━━━━━━━━━━━━•
-┊┗━━━━━━━━━━━━━━•
-╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⪩ 
+let saludos = `~ Hola ${pushname} ${user.registered === true ? '✓' : ''}`
+let menu = `
+╭┄╌╌╌╌〔 ≪ •🌐• ≫ 〕╌╌┄─╌╌•
+┆📡 ʙɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ᴍᴇɴᴜ ʟɪsᴛᴀ
+┆◤━━━━━ ☆. ∆ .☆ ━━━━━◥
+┆ \`ℹ️ ＩＮＦＯＢＯＴ\`
+┆◤━━━━━ ☆. ∆ .☆ ━━━━━◥
+┆ ${lenguaje.menu.text} [ ${prefix} ]
+┆ ${lenguaje.menu.text2} ${date}    
+┆ ${lenguaje.menu.text3} ${time} 
+┆ ${lenguaje.menu.text4} ${vs}
+┆ ${lenguaje.menu.text5} ${Object.keys(global.db.data.users).length}
+┆ ${lenguaje.menu.text6} ${runtime(process.uptime())}
+┆ ${lenguaje.menu.text7} ${conn.public ? 'publico' : 'privado'}
+┆◤━━━━━ ☆. ∆ .☆ ━━━━━◥
+┆ \`👥 INFO DEL USUARIO\`
+┆◤━━━━━ ☆. ∆ .☆ ━━━━━◥
+┆ ${lenguaje.menu.text8} ${user.limit}
+┆ ${lenguaje.menu.text9} ${user.level}
+┆ ${lenguaje.menu.text10} ${user.role}
+┆❏ ᴇxᴘ : ${user.exp}
+┆❏ ᴄᴏɪɴs : ${user.money}
+┆
+┆ ${lenguaje.menu.text11} ${rtotalreg} de ${totalreg}
+└────ׂ─ׂ─ׂ─ׂ─────╌─╌─╌
+${conn.user.id == global.numBot2 ? `> *👑Bot Oficial*` : `${lenguaje.menu.texttt} @${global.numBot.split`@`[0]}`}`
+let xd = `${pickRandom([`\`¿𝐐𝐮𝐢𝐞𝐫𝐞𝐬 𝐨𝐛𝐭𝐞𝐧𝐞𝐫 𝐭𝐮 𝐛𝐨𝐭 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥𝐢𝐳𝐚𝐝𝐨?\`https://www.facebook.com/elrebelde21`, `\`□ CÓMO INSTALAR EL BOT\`\n${yt}`, `\`¿Qué hay de nuevo?\`\n• Pon : ${prefix}nuevo`, `\`💫 INFÓMARTE SOBRE LAS NUEVAS ACTUALIZACIONES, NOVEDADES DEL BOT AQUI\`\n${nna}`, `\`🌟¿Te agrada el bot? califica nuestro repositorio con una estrellita ☺\`\n${md}\``])}`
 
-${pickRandom([`\`¿𝐐𝐮𝐢𝐞𝐫𝐞𝐬 𝐨𝐛𝐭𝐞𝐧𝐞𝐫 𝐭𝐮 𝐛𝐨𝐭 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥𝐢𝐳𝐚𝐝𝐨?\`
-https://www.facebook.com/elrebelde21`, `\`□ CÓMO INSTALAR EL BOT\`\n${yt}`, `\`¿Qué hay de nuevo?\`\n• Pon : ${prefix}nuevo`, `\`💫 INFÓMARTE SOBRE LAS NUEVAS ACTUALIZACIONES, NOVEDADES DEL BOT AQUI\`\n${nna}`, `\`🌟¿Te agrada el bot? califica nuestro repositorio con una estrellita ☺\`\n${md}\``])}
+let listSections = []    
+listSections.push({
+title: '',
+rows: [{ header: "𝐌𝐄𝐍𝐔 𝐂𝐎𝐌𝐏𝐋𝐄𝐓𝐎", title: "", id: `.allmenu`, description: `Muestra el menu completo\n` }, 
+{ header: "𝐌𝐄𝐍𝐔 𝐃𝐄𝐒𝐂𝐀𝐑𝐆𝐀𝐑", title: "", id: `.menu1`, description: `Muestra el menu de descarga\n` },
+{ header: "𝐀𝐔𝐃𝐈𝐎𝐒", title: "", id: `.menu2`, description: `Muestra el menu de audios palabra clave para interactuar con el bot\n` },
+{ header: "𝐌𝐄𝐍𝐔 𝐆𝐑𝐔𝐏𝐎", title: "", id: `.menu3`, description: `Muestra el menu de gestión del Grupo\n` },
+{ header: "𝐁𝐔𝐒𝐂𝐀𝐃𝐎𝐑𝐄𝐒", title: "", id: `.menu4`, description: `Muestra el menu para buscar información\n` },
+{ header: "𝐉𝐔𝐄𝐆𝐎𝐒", title: "", id: `.menu5`, description: `Muestra el menu de juegos para divertir tu grupo con multi juegos\n` }, 
+{ header: "𝐄𝐅𝐄𝐂𝐓𝐎", title: "", id: `.menu6`, description: `Muestra el menu de efecto\n` }, 
+{ header: "𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐈𝐃𝐎𝐑𝐄𝐒", title: "", id: `.menu7`, description: `Muestra el menu de convertidores\n` }, 
+{ header: "𝐑𝐀𝐍𝐃𝐎𝐖", title: "", id: `.menu8`, description: `Muestra el menu randow\n` }, 
+{ header: "𝐑𝐏𝐆", title: "", id: `.menu9`, description: `Muestra el menu RPG\n` }, 
+{ header: "𝐌𝐄𝐍𝐔 𝐒𝐓𝐈𝐂𝐊𝐄𝐑", title: "", id: `.menu10`, description: `Muestra el menu de creación de sticker\n` }, 
+{ header: "𝐌𝐄𝐍𝐔 𝐏𝐀𝐑𝐀 𝐏𝐑𝐎𝐏𝐈𝐄𝐓𝐀𝐑𝐈𝐎", title: "", id: `.menu11`, description: `Muestra el menu solo para propietario del bot\n` }, 
+{ header: "𝐌𝐄𝐍𝐔 +𝟏𝟖", title: "", id: `.menu18`, description: `Muestra el menu +18 (usarlo bajo tu responsabilidad)\n` }, 
+{ header: "𝐋𝐈𝐒𝐓𝐀 𝐃𝐄 𝐋𝐎𝐆𝐎𝐒", title: "", id: `.logos`, description: `Muestra la lista para crear logos\n` }, 
+{ header: "𝐕𝐄𝐋𝐎𝐂𝐈𝐃𝐀𝐃", title: "", id: `.status`, description: `Comprueba la velocidad del bot\n` }, 
+{ header: "𝐑𝐄𝐆𝐋𝐀", title: "", id: `.reglas`, description: `Conecer la reglas del bot\n` }, 
+{ header: "𝐑𝐄𝐆𝐋𝐀𝐒", title: "", id: `.nuevo`, description: `Revisan si hay nueva versión / comando\n` }
+]})
 
-╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⪩
-┊┏━━━━━━━━━━━━━━•
-┊┃ *🟢 ＬＩＳＴＡ ＤＥ ＣＯＭＡＮＤＯＳ*
-┊┃━━━━━━━━━━━━━━•
-┊┃ ❏ ${prefix}allmenu | menucompleto
-┊┃ ❏ ${prefix}menu1 | descarga
-┊┃ ❏ ${prefix}menu2 | audio
-┊┃ ❏ ${prefix}menu3 | menugrupos
-┊┃ ❏ ${prefix}menu4 | menubuscadores
-┊┃ ❏ ${prefix}menu5 | menujuegos
-┊┃ ❏ ${prefix}menu6 | menuefecto
-┊┃ ❏ ${prefix}menu7 | menuconvertidores
-┊┃ ❏ ${prefix}menu8 | menurandom
-┊┃ ❏ ${prefix}menu9 | menuRPG
-┊┃ ❏ ${prefix}menu10 | menuSticker
-┊┃ ❏ ${prefix}menu11 | menuOwner
-┊┃ ❏ ${prefix}menu18 | menuhorny
-┊┃ ❏ ${prefix}logos 
-┊┃━━━━━━━━━━━━━━•
-┊┃ *💫 ＩＮＦＯＲＭＡＣＩＯ́Ｎ 💫*
-┊┃━━━━━━━━━━━━━━•
-┊┃ ❏ ${prefix}estado _(estado del bot)_
-┊┃ ❏ ${prefix}nuevo _(nuevo comando)_
-┊┃ ❏ ${prefix}reglas _(reglas)_
-┊┃ ❏ ${prefix}ping
-┊┃ ❏ ${prefix}velocidad
-┊┃ ❏ ${prefix}grupos _(grupos oficiales)_
-┊┃ ❏ ${prefix}join _(solicita un bot para tu grupo)_
-┊┃ ❏ ${prefix}owner
-┊┃ ❏ ${prefix}creador _(contactos de mi creador)_
-┊┃ ❏ ${prefix}instalarbot (Tutorial del instalacion)_
-┊┃ ❏ ${prefix}solicitud
-┊┃ ❏ ${prefix}cuenta 
-┊┃ ❏ ${prefix}cuentaoficiales
-┊┃ ❏ ${prefix}status 
-┊┃ ❏ ${prefix}enable 
-┊┃ ❏ ${prefix}configurar
-┊┃ ❏ ${prefix}cafirexos
-┊┃ ❏ ${prefix}report _(reporta errores)_
-┊┗━━━━━━━━━━━━━━•
-╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⪩`
-conn.sendMessage(m.chat, { text: menu,  
+conn.sendList(m.chat, saludos, menu, `sᴇʟᴇᴄᴄɪᴏɴᴇs ᴀǫᴜɪ`, listSections, fkontak)
+
+/*conn.sendMessage(m.chat, { text: menu,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -507,12 +484,13 @@ mentionedJid:[sender, numBot],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100}) 
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100}) */
 }
 
 if (command == 'menu1' || command == 'descarga') {
 m.react('🚀') 
-conn.sendMessage(m.chat, { text: submenu + descargar,  
+conn.sendButton(m.chat, submenu, descargar, pickRandom([img, img1, img2]), [['𝐀𝐔𝐃𝐈𝐎𝐒', `.menu2`], ['𝐕𝐄𝐋𝐎𝐂𝐈𝐃𝐀𝐃', `.ping`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + descargar,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -529,7 +507,8 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'menu2' || command == 'audio') {
 
@@ -538,7 +517,8 @@ conn.sendMessage(m.chat, { text: menu2}, { quoted: fkontak, ephemeralExpiration:
 
 if (command == 'menu3' || command == 'menugrupos') {
 m.react('🔰') 
-conn.sendMessage(m.chat, { text: submenu + grupos,  
+conn.sendButton(m.chat, submenu, grupos, pickRandom([img, img1, img2]), [['𝐃𝐄𝐒𝐂𝐀𝐑𝐆𝐀𝐑', `.descarga`], ['𝐕𝐄𝐋𝐎𝐂𝐈𝐃𝐀𝐃', `.ping`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + grupos,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -555,11 +535,13 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'menu4' || command == 'menubuscadores') {
 m.react('🪄') 
-conn.sendMessage(m.chat, { text: submenu + buscadores,  
+conn.sendButton(m.chat, submenu, buscadores, pickRandom([img, img1, img2]), [['🎮 𝐉𝐔𝐄𝐆𝐎𝐒', `.menu5`], ['✅ 𝐒𝐓𝐀𝐓𝐔𝐒', `.status`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + buscadores,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -576,11 +558,13 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'menu5' || command == 'menujuegos') {
 m.react('👾') 
-conn.sendMessage(m.chat, { text: submenu + juegos,  
+conn.sendButton(m.chat, submenu, juegos, pickRandom([img, img1, img2]), [['𝐌𝐄𝐍𝐔 𝐄𝐅𝐄𝐂𝐓𝐎', `.menu6`], ['𝐕𝐄𝐋𝐎𝐂𝐈𝐃𝐀𝐃', `.ping`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + juegos,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -597,11 +581,13 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'menu6' || command == 'menuefecto') {
 m.react('🎤') 
-conn.sendMessage(m.chat, { text: submenu + efecto,  
+conn.sendButton(m.chat, submenu, efecto, pickRandom([img, img1, img2]), [['𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐈𝐃𝐎𝐑𝐄𝐒', `.menu7`], ['𝐑𝐄𝐆𝐋𝐀𝐒', `.reglas`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + efecto,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -618,11 +604,13 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'menu7' || command == 'menuconvertidores') {
 m.react('🧧') 
-conn.sendMessage(m.chat, { text: submenu + convertidores,  
+conn.sendButton(m.chat, submenu, efecto, pickRandom([img, img1, img2]), [['𝐂𝐎𝐍𝐕𝐄𝐑𝐓𝐈𝐃𝐎𝐑𝐄𝐒', `.menu7`], ['𝐑𝐄𝐆𝐋𝐀𝐒', `.reglas`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + convertidores,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -639,11 +627,14 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+
+}
 
 if (command == 'menu18' || command == 'Menuhony') {
 m.react('🥵') 
-conn.sendMessage(m.chat, { text: submenu + menu18,  
+conn.sendButton(m.chat, submenu, menu18, pickRandom([img, img1, img2]), [['𝐌𝐄𝐍𝐔-𝐑𝐀𝐍𝐃𝐎𝐖', `.menu8`], ['𝐕𝐄𝐋𝐎𝐂𝐈𝐃𝐀𝐃', `.ping`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + menu18,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -660,11 +651,13 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'menurandow' || command == 'menu8') {
 m.react('⛩️') 
-conn.sendMessage(m.chat, { text: submenu + menurandow,  
+conn.sendButton(m.chat, submenu, menurandow, pickRandom([img, img1, img2]), [['𝐌𝐄𝐍𝐔-𝐑𝐏𝐆', `.menu9`], ['𝐋𝐎𝐆𝐎𝐒', `.logos`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + menurandow,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -681,11 +674,13 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'menuRPG' || command == 'menu9') {
 m.react('⚒️') 
-conn.sendMessage(m.chat, { text: submenu + menuRPG,  
+conn.sendButton(m.chat, submenu, menuRPG, pickRandom([img, img1, img2]), [['𝐌𝐄𝐍𝐔-𝐒𝐓𝐈𝐂𝐊𝐄𝐑', `.menu10`], ['𝐕𝐄𝐋𝐎𝐂𝐈𝐃𝐀𝐃', `.ping`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + menuRPG,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -702,11 +697,13 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'menuSticker' || command == 'menu10') {
 m.react('🎈') 
-conn.sendMessage(m.chat, { text: submenu + menuSticker,  
+conn.sendButton(m.chat, submenu, menuSticker, pickRandom([img, img1, img2]), [['𝐌𝐄𝐍𝐔-𝐎𝐖𝐍𝐄𝐑', `.menu11`], ['𝐄𝐒𝐓𝐀𝐃𝐎', `.estado`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + menuSticker,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -723,11 +720,13 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'menuOwner' || command == 'menu11') {
 m.react('👑') 
-conn.sendMessage(m.chat, { text: submenu + menuOwner,  
+conn.sendButton(m.chat, submenu, menuOwner, pickRandom([img, img1, img2]), [['𝐌𝐄𝐍𝐔 𝐂𝐎𝐌𝐏𝐋𝐄𝐓𝐎', `.allmenu`], ['𝐕𝐄𝐋𝐎𝐂𝐈𝐃𝐀𝐃', `.ping`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: submenu + menuOwner,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -744,13 +743,14 @@ mentionedJid:[sender],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})}
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})*/
+}
 
 if (command == 'allmenu' || command == 'menucompleto') {
 m.react('🙌') 
 let menu = `╔══════ ≪ •❈• ≫ ══════╗
 ║◤━━━━━ ☆. ∆ .☆ ━━━━━◥
-║${lenguaje['smsWel']()} @${sender.split("@")[0]} ${user.registered === true ? 'ͧͧͧͦꙶͣͤ✓' : ''} 👋🏻
+║${lenguaje['smsWel']()} ${pushname} ${user.registered === true ? 'ͧͧͧͦꙶͣͤ✓' : ''} 👋🏻
 ║◤━━━━━ ☆. ∆ .☆ ━━━━━◥
 ║${lenguaje.menu.text} [ ${prefix} ]
 ║${lenguaje.menu.text2} ${date}
@@ -759,7 +759,7 @@ let menu = `╔══════ ≪ •❈• ≫ ══════╗
 ║${lenguaje.menu.text5} ${Object.keys(global.db.data.users).length}
 ║${lenguaje.menu.text6} ${runtime(process.uptime())}
 ║${lenguaje.menu.text7} ${conn.public ? 'publico' : 'privado'}
-║${conn.user.id == global.numBot2 ? `${lenguaje.menu.textt} ` : `${lenguaje.menu.texttt} @${global.numBot.split`@`[0]}`}
+║${conn.user.id == global.numBot2 ? `${lenguaje.menu.textt} ` : `${lenguaje.menu.texttt} wa.me/${global.numBot.split`@`[0]}`}
 ║ 
 ║${lenguaje.menu.text8} ${user.limit}
 ║${lenguaje.menu.text9} ${user.level}
@@ -1139,7 +1139,9 @@ ${lenguaje.menu.text12}
 ├❥ᰰຼ ❏ >
 ├❥ᰰຼ ❏ => 
 *╰┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭࣭࣭۫┄̸࣭۫┄̸࣭࣭࣭࣭࣭ٜ۫┄̸࣭࣭࣭࣭࣭ٜ۫┄࣭۫*`
-conn.sendMessage(m.chat, { text: menu,  
+
+conn.sendButton(m.chat, menu, botname, img, [['𝐈𝐍𝐅𝐎', `.status`], ['𝐆𝐑𝐔𝐏𝐎𝐒', `.grupos`]], null, [['𝐍𝐨𝐯𝐚𝐁𝐨𝐭-𝐌𝐃', `${pickRandom([nna, nn, md, yt])}`]], m)
+/*conn.sendMessage(m.chat, { text: menu,  
 contextInfo:{  
 forwardedNewsletterMessageInfo: { 
 newsletterJid: '120363160031023229@newsletter', 
@@ -1156,7 +1158,7 @@ mentionedJid:[sender, numBot],
 "mediaType": 1,   
 "thumbnail": imagen2, 
 sourceUrl: `${pickRandom([nna, nn, md, yt])}`
-}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100}) 
+}}}, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100}) */
 }
 
 if (command == 'nuevo' || command == 'extreno') {

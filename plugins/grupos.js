@@ -30,13 +30,14 @@ if (command == 'grupo') {
 if (!m.isGroup) return m.reply(info.group);  
 if (!isBotAdmins) return m.reply(info.botAdmin);  
 if (!isGroupAdmins) return m.reply(info.admin)
-if (!text) return conn.sendPoll(m.chat, `${lenguaje.enable.text}\n*${prefix + command} abrir*\n*${prefix + command} cerrar*`, ['grupo abrir','grupo cerrar'])
+if (!text) return conn.sendButton(m.chat, `${lenguaje.enable.text}\n*${prefix + command} abrir*\n*${prefix + command} cerrar*`, wm, null, [['Grupo abierto 🔓', `.grupo abrir`], ['Grupo cerrado 🔐', '.grupo cerrar']], null, null, m)
 //m.reply(`${lenguaje.enable.text}\n*${prefix + command} abrir*\n*${prefix + command} cerrar*`)
 if (args[0] === 'abrir') {
-m.reply(lenguaje.grupos.text1)
+conn.sendButton(m.chat, lenguaje.grupos.text1, wm, null, [['🔐Cerrar', `.grupo cerrar`]], null, null, m)
+//m.reply(lenguaje.grupos.text1)
 await conn.groupSettingUpdate(m.chat, 'not_announcement')
 } else if (args[0] === 'cerrar') {
-m.reply(lenguaje.grupos.text2)
+conn.sendButton(m.chat, lenguaje.grupos.text2, wm, null, [['🔓abrir', `.grupo abrir`]], null, null, m)
 await conn.groupSettingUpdate(m.chat, 'announcement')
 }}
     
@@ -169,14 +170,14 @@ conn.sendText(m.chat, `https://chat.whatsapp.com/${response}`, m, { detectLink: 
 if (command == 'banchat') { 
 if (!m.isGroup) return m.reply(info.group) 
 if (!isCreator) return m.reply(info.owner) 
-if (!text) return conn.sendPoll(m.chat, `${lenguaje.enable.text}\n*$*${prefix + command} on*\n*${prefix + command} off*`, ['banchat on','banchat off'])
+if (!text) return conn.sendButton(m.chat, `${lenguaje.enable.text}\n*${prefix + command} on*\n*${prefix + command} off*`, wm, null, [['On', `.banchat on`], ['off', '.banchat off']], null, null, m)
 //m.reply(`${lenguaje.enable.text}\n*${prefix + command} on*\n*${prefix + command} off*`)
 if (args[0] === "on") {
 global.db.data.chats[m.chat].isBanned = true
-m.reply(lenguaje.grupos.text19)
+conn.sendButton(m.chat, lenguaje.grupos.text19, wm, null, [['Apagar', '.banchat off']], null, null, m)
 } else if (args[0] === "off") {  
 global.db.data.chats[m.chat].isBanned = false
-m.reply(lenguaje.grupos.text20)}}
+conn.sendButton(m.chat, lenguaje.grupos.text20, wm, null, [['Activar', '.banchat on']], null, null, m)}}
 
 if (command == 'tagall' || command == 'invocar' || command == 'todos') {
 if (!m.isGroup) return m.reply(info.group) 

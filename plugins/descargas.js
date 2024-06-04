@@ -21,7 +21,44 @@ async function descarga(m, command, conn, text, command, args, fkontak, from, bu
 if (global.db.data.users[m.sender].registered < true) return m.reply(info.registra)
 if (global.db.data.users[m.sender].limit < 1) return m.reply(info.endLimit)
 if (global.db.data.users[m.sender].banned) return
-if (command == 'play') {
+
+if (command == 'play' || command == 'play2') {
+if (!text) return m.reply(lenguaje.descargar.text + ` *${prefix + command}* ozuna`) 
+
+const yt_play = await search(args.join(' '))
+const texto1 = `${lenguaje.descargar.text2}\n\n◉ ${lenguaje.descargar.title} ${yt_play[0].title}
+
+◉ ${lenguaje.descargar.ago} ${yt_play[0].ago}
+
+◉ ${lenguaje.descargar.duracion} ${secondString(yt_play[0].duration.seconds)}
+
+◉ ${lenguaje.descargar.views} ${MilesNumber(yt_play[0].views)}
+
+◉ ${lenguaje.descargar.autor} ${yt_play[0].author.name}
+
+◉ Link: ${yt_play[0].url}`.trim()
+
+await conn.sendButton(m.chat, texto1, botname, yt_play[0].thumbnail, [['Audio', `.musica ${text}`], ['Video', `.video ${text}`]], null, null, m)}
+
+if (command == 'play3' || command == 'play4') {
+if (!text) return m.reply(lenguaje.descargar.text + ` *${prefix + command}* ozuna`) 
+
+const yt_play = await search(args.join(' '))
+const texto1 = `${lenguaje.descargar.text2}\n\n◉ ${lenguaje.descargar.title} ${yt_play[0].title}
+
+◉ ${lenguaje.descargar.ago} ${yt_play[0].ago}
+
+◉ ${lenguaje.descargar.duracion} ${secondString(yt_play[0].duration.seconds)}
+
+◉ ${lenguaje.descargar.views} ${MilesNumber(yt_play[0].views)}
+
+◉ ${lenguaje.descargar.autor} ${yt_play[0].author.name}
+
+◉ Link: ${yt_play[0].url}`.trim()
+
+await conn.sendButton(m.chat, texto1, botname, yt_play[0].thumbnail, [['Audio', `.ytmp3 ${text}`], ['Video', `.ytmp4 ${text}`], ['Mas resultados', `.yts ${text}`]], null, null, m)}
+
+if (command == 'musica') {
 if (!text) return m.reply(lenguaje.descargar.text + ` *${prefix + command}* ozuna`) 
 m.react(rwait) 
 let vid = (await yts(text)).all[0]
@@ -73,7 +110,7 @@ m.react(error)
 return m.reply(info.error) 
 console.log(e)}}}}}
 
-if (command == 'play2') {
+if (command == 'video') {
 if (!text) return m.reply(lenguaje.descargar.text + ` *${prefix + command}* ozuna`) 
 m.react(rwait) 
 let vid = (await yts(text)).all[0]
@@ -123,7 +160,7 @@ m.react(error)
 return m.reply(info.error) 
 console.log(e)}}}}}
 
-if (command == 'play3' || command == 'playdoc' || command == 'playaudiodoc' || command == 'ytmp3doc') {
+if (command == 'ytmp3' || command == 'ytmp3doc') {
 if (!text) return m.reply(lenguaje.descargar.text1 + `\n• *${prefix + command}* ozuna\n• ${prefix + command} https://youtu.be/7ouFkoU8Ap8?si=Bvm3LypvU_uGv0bw`) 
 try { 
 m.react(rwait) 
@@ -159,7 +196,7 @@ m.react(error)
 return m.reply(info.error) 
 console.log(e)}}}}
 
-if (command == 'play4' || command == 'playdoc2' || command == 'playvideodoc' || command == 'ytmp4doc' || command == 'ytmp4') {
+if (command == 'playdoc2' || command == 'playvideodoc' || command == 'ytmp4doc' || command == 'ytmp4') {
 if (!text) return m.reply(lenguaje.descargar.text1 + `\n• *${prefix + command}* ozuna\n• ${prefix + command} https://youtu.be/7ouFkoU8Ap8?si=Bvm3LypvU_uGv0bw`) 
 m.react(rwait) 
 let vid = (await yts(text)).all[0]
@@ -208,7 +245,7 @@ m.react(error)
 return m.reply(info.error) 
 console.log(e)}}}}}}
 
-if (command == 'play.1' || command == 'musica' || command == 'play.2' || command == 'video') {
+if (command == 'play.1' || command == 'play.2') {
 let data;
 let buff;
 let mimeType;
@@ -233,7 +270,7 @@ if (!data.resultado || !data.resultado.url) {
 enviando = false;
 } else {
 try {
-if (command == 'play.1' || command == 'musica') {
+if (command == 'play.1') {
 m.reply(lenguaje.descargar.audio) 
 apiUrl = `https://api-brunosobrino.zipponodes.xyz/api/v1/ytmp3?url=${data.resultado.url}`;
 mimeType = 'audio/mpeg';
@@ -249,7 +286,7 @@ buff = await conn.getFile(apiUrl);
 m.react(done) 
 }} catch {
 try {
-if (command == 'play.1' || command == 'musica') {
+if (command == 'play.1') {
 apiUrl = `https://api-brunosobrino.onrender.com/api/v1/ytmp3?url=${data.resultado.url}`;
 mimeType = 'audio/mpeg';
 fileName = 'error.mp3';
@@ -324,13 +361,27 @@ m.react(done)
 m.react(error) 
 m.reply(info.error)}}
 
+
 if (command == 'tiktok' || command == 'tt') {
 if (!text) return m.reply(`${lenguaje.lengua.ejem}\n${prefix + command} https://vm.tiktok.com/ZMjdrFCtg/`)
 if (!isUrl(args[0]) && !args[0].includes('tiktok')) return m.reply(`Link invalido!!`)
 conn.fakeReply(m.chat, `${lenguaje.lengua.espere}`, '0@s.whatsapp.net', 'No haga spam')
 try {
 require('../libs/tiktok').Tiktok(args).then( data => {
-conn.sendMessage(m.chat, { video: { url: data.nowm }}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+conn.sendButton(m.chat, `*🔥 AQUI ESTA TU VIDEO DEL TIKTOK*\n_*• Titulo:*_ ${result.title}`, 'Server proveido por NovaBot-MD', data.nowm, [['Descargar audio', `.tik2 ${text}`]], null, null, m)}) 
+/*conn.sendMessage(m.chat, { video: { url: data.nowm }}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+conn.sendMessage(m.chat, { audio: { url: data.audio }, mimetype: 'audio/mp4' }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})})*/
+db.data.users[m.sender].limit -= 1
+m.reply('1 ' + info.limit)
+} catch {
+m.reply(info.error)}}
+
+if (command == 'tik2') {
+if (!text) return m.reply(`${lenguaje.lengua.ejem}\n${prefix + command} https://vm.tiktok.com/ZMjdrFCtg/`)
+if (!isUrl(args[0]) && !args[0].includes('tiktok')) return m.reply(`Link invalido!!`)
+conn.fakeReply(m.chat, `${lenguaje.lengua.espere}`, '0@s.whatsapp.net', 'No haga spam')
+try {
+require('../libs/tiktok').Tiktok(args).then( data => {
 conn.sendMessage(m.chat, { audio: { url: data.audio }, mimetype: 'audio/mp4' }, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})})
 db.data.users[m.sender].limit -= 1
 m.reply('1 ' + info.limit)
